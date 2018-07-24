@@ -8,3 +8,18 @@
     <li>{{this}}</li>
     {{/each}}
 </ul>
+<h2>Extracted Concepts</h2>
+<ul>
+    {{#each concepts}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+<h2>Extracted Entities</h2>
+<ul>
+    {{#each entities}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+<h2>Sentiment</h2>
+<h6>Polarity: {{polarity}} with {{polarity_confidence}} confidence</h6>
+<h6>Subjectivity: {{polarity}} with {{subjectivity_confidence}} confidence</h6>
