@@ -1,44 +1,30 @@
 # Prestige
-Analyze articles and receive legitimacy reports and succinct summaries.
+Analyze articles for emotion and bias, understand important concepts, and be provided with a succinct summary.
 
 ## Audience
-People who want to analyze and/or summarize text. Useful for writers checking for article bias or readers checking for the legitimacy of an article on a website.
+Readers who want to be more informed about the legitimacy of an article or who may be unfamiliar with the subject matter. Also useful for writers checking for article bias.
 
 ## Experience
-The user signs up, logs into the webpage, and sees the options to analyze, summarize, or translate. Clicking one will allow them to input text or urls with options to refine their intentions. They then press a button to analyze their inputs and are returned with understandable and visually appealing results. They can save their results which will be used to recommend articles that may be of potential interest in the future.
+The user enters the webpage, and sees the option to enter a website url that links to an article. They then press a button to analyze their inputs and are returned with understandable and visually appealing results. Additional features to have the article read out loud and also the option to have it translated will be implemented later.
 
 # Technical
 ## Models
-- User
-- Document
 - Results
 
 ## Views
 - Index/Home
-- Sign Up
-- Log In
 - Text/URL Input
 - Result
-- Past Analysis
 
 ## Routes
 - Index/Home
   - GET <span></span>www.prestige.com/
-- Signup
-  - GET <span></span>www.prestige.com/signup
-  - POST <span></span>www.prestige.com/signup
-- Login
-  - GET <span></span>www.prestige.com/login
-  - POST <span></span>www.prestige.com/login
 - Result
   - GET <span></span>www.prestige.com/result
   - POST <span></span>www.prestige.com/results
-- Past Searches
-  - GET <span></span>www.prestige.com/past
 
 ## Features
 - Input for text and links
-- Filters for intentions
 - Results page with analysis and summary
 - Option to translate the article and its summary
 - Option to see current trending news/topics
@@ -57,9 +43,6 @@ The user signs up, logs into the webpage, and sees the options to analyze, summa
 * MongoDB
 * IBM Watson Natural Language Classifier, Natural Language Understanding, Tone Analyzer, Language Translator, and Text to Speech
 * WebKnox Text-Processing, Words, 
-* Google Cloud Natural Language
-* Microsoft Azure
-* Traitify
 * Aylien
 
 ## Planning
@@ -69,17 +52,15 @@ The user signs up, logs into the webpage, and sees the options to analyze, summa
     - Node.js, MongoDB, and API setup
   - Tuesday July 24, 2018
     - Experiment with APIs and learn their calls
-    - Create the user data model
-    - Implement sign-up login feature and views
   - Wednesday July 25, 2018
     - Create front end skeleton
     - Receive data from the APIs
     - Create the results data model
   - Thursday July 26, 2018
-    - Have working functionality for analyze, summarize, and translate
+    - Have working functionality for the webpage
   - Friday July 27, 2018
     - Complete MVP
-    - Start adding additional features such as alternate article recommendations and correction suggestions
+    - Start adding additional features
 - Week Two
   - Monday July 30, 2018
     - Continue and potentially complete working on adding additional features
