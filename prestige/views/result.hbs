@@ -1,13 +1,15 @@
-<h1>{{title}}</h1>
-<h4>{{author}}</h4>
+<h1>{{report.article.title}}</h1>
+<h4>{{report.article.author}}</h4>
 <h2>Website Reputation: {{report.website_reputation}}</h2>
 <h4>Website Rating: {{report.website_rating}}</h4>
-<h2>Author Reputation: </h2>
-<img src="{{main_image}}" alt="{{main_image}}"/>
-<p>{{article}}</p>
+<h2>Author Legitimacy: {{report.author_legitimacy}}</h2>
+<img src="{{report.article.main_image}}" alt="{{report.article.main_image}}"/>
+<h2>Sentiment</h2>
+<h6>Polarity: {{report.polarity}} with {{report.polarity_confidence}} confidence</h6>
+<h6>Subjectivity: {{report.polarity}} with {{report.subjectivity_confidence}} confidence</h6>
 <h2>Summarized Article</h2>
 <ul>
-    {{#each summarized_article}}
+    {{#each report.article.summarized_article}}
     <li>{{this}}</li>
     {{/each}}
 </ul>
@@ -17,6 +19,4 @@
     <li>{{this}}</li>
     {{/each}}
 </ul>
-<h2>Sentiment</h2>
-<h6>Polarity: {{polarity}} with {{polarity_confidence}} confidence</h6>
-<h6>Subjectivity: {{polarity}} with {{subjectivity_confidence}} confidence</h6>
+<p>{{report.article.full_article}}</p>
