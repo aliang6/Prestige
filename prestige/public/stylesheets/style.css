@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+#article-picture {
+  width: 75%;
+  height: auto;
+}
