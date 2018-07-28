@@ -1,0 +1,10 @@
+.home {
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#logo-title {
+    font-family: 'Trebuchet MS', 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
+    font-size: 10em;
+    color: rgba(256, 256, 256, 0.85);
+}

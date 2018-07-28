@@ -9,7 +9,14 @@ class Results extends Component {
 
     render() {
         return (
-            <div>
+            <div id="results-page">
+                <ul id="header">
+                    <li class="header-item">Prestige</li>
+                    <li class="header-item">Website Reputation</li>
+                    <li class="header-item">Author Analysis</li>
+                    <li class="header-item">Sentiment Analysis</li>
+                    <li class="header-item">Article Analysis</li>
+                </ul>
                 <h1>{this.props.report.article.title}</h1>
                 <h4>{this.props.report.article.author}</h4>
                 <h2>Website Reputation: {this.props.report.website_reputation}</h2>

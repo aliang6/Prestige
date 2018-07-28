@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Home from './Home.js';
-import SearchForm from './SearchForm.js';
-import Results from './Results.js';
+import Home from './Home/Home.js';
+import SearchForm from './Home/SearchForm.js';
+import Results from './Results/Results.js';
 
 class App extends Component {
   constructor(props) {
