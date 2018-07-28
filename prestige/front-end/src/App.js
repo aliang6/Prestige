@@ -55,14 +55,15 @@ class App extends Component {
               url = {this.state.url}
               onUrlChange = {this.handleUrlChange}
               onButtonClick = {this.handleSearchSubmit} 
-            />} 
-          />
+            />
+          }/>
         }
         {!this.state.index &&  
           <Results 
             report = {this.report}
-            onButtonClick = {this.handleNewSearch}
-          />}
+            newSearchClick = {this.handleNewSearch}
+          />
+        }
       </div>
     )
   }

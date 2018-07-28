@@ -1,22 +1,111 @@
 import React, { Component } from 'react';
+import WebsiteReputation from '../WebsiteReputation/WebsiteReputation.js';
+import WriterLegitimacy from '../WriterLegitimacy/WriterLegitimacy.js';
+import SentimentReport from '../SentimentReport/SentimentReport.js';
+import ArticleSummary from '../ArticleSummary/ArticleSummary.js';
 
 class Results extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            webRepPage: true,
+            wriLegPage: true,
+            sentRepPage: true,
+            artSumPage: true,
         };
+
+        this.logoClick = this.logoClick.bind(this);
+        this.webRepClick = this.webRepClick.bind(this);
+        this.wriLegClick=this.wriLegClick.bind(this);
+        this.sentRepClick = this.sentRepClick.bind(this);
+        this.artSumClick = this.artSumClick.bind(this);
     }
+
+    logoClick(event) {
+        event.preventDefault();
+    }
+
+    webRepClick(event) {
+        event.preventDefault();
+        this.setState({
+            webRepPage: true,
+            wriLegPage: false,
+            sentRepPage: false,
+            artSumPage: false,
+        });
+        console.log(this.state.webRepPage);
+    }
+    
+    wriLegClick(event) {
+        event.preventDefault();
+        this.setState({
+            webRepPage: false,
+            wriLegPage: true,
+            sentRepPage: false,
+            artSumPage: false,
+        });
+        console.log(this.state.webRepPage);
+    }
+
+    sentRepClick(event) {
+        event.preventDefault();
+        this.setState({
+            webRepPage: false,
+            wriLegPage: false,
+            sentRepPage: true,
+            artSumPage: false,
+        });
+    }
+
+    artSumClick(event) {
+        event.preventDefault();
+        this.setState({
+            webRepPage: false,
+            wriLegPage: false,
+            sentRepPage: false,
+            artSumPage: true,
+        });
+        console.log(this.state.webRepPage);
+    }
+    
 
     render() {
         return (
             <div id="results-page">
                 <ul id="header">
-                    <li class="header-item">Prestige</li>
-                    <li class="header-item">Website Reputation</li>
-                    <li class="header-item">Author Analysis</li>
-                    <li class="header-item">Sentiment Analysis</li>
-                    <li class="header-item">Article Analysis</li>
+                    <li className="header-item"><button onClick={this.logoClick}>Prestige</button></li>
+                    <li className="header-item"><button onClick={this.webRepClick}>Website Reputation</button></li>
+                    <li className="header-item"><button onClick={this.wriLegClick}>Writer Legitimacy</button></li>
+                    <li className="header-item"><button onClick={this.sentRepClick}>Sentiment Report</button></li>
+                    <li className="header-item"><button onClick={this.artSumClick}>Article Summary</button></li>
                 </ul>
+
+                {this.state.webRepPage && 
+                    <WebsiteReputation 
+                        reputation={this.props.report.website_reputation} 
+                        url="https://"
+                    />
+                }
+                {this.state.wriLegPage && 
+                    <WriterLegitimacy 
+                        author_legitimacy={this.props.report.author_legitimacy} 
+                        emotions={this.props.report.author_legitimacy_percentiles}
+                    />
+                }
+                {this.state.sentRepPage &&
+                    <SentimentReport
+                        polarity={this.props.report.polarity}
+                        polarity_confidence={this.props.report.polarity_confidence}
+                        emotions={this.props.report.emotions}
+                    />
+                }
+                {this.state.artSumPage &&
+                    <ArticleSummary
+                        article = {this.props.report.article}
+                        concepts = {this.props.report.main_concepts}
+                    />
+                }
+                
                 <h1>{this.props.report.article.title}</h1>
                 <h4>{this.props.report.article.author}</h4>
                 <h2>Website Reputation: {this.props.report.website_reputation}</h2>
@@ -46,7 +135,7 @@ class Results extends Component {
                     <li>Anger: {this.props.report.emotions.anger}</li>
                 </ul>
                 <p>{this.props.report.article.full_article}</p>
-                <button onClick={this.props.onButtonClick}>New Search</button>;
+                <button onClick={this.props.newSearchClick}>New Search</button>;
             </div>
         );
     };
