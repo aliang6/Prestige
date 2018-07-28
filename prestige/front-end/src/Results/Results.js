@@ -9,9 +9,9 @@ class Results extends Component {
         super(props);
         this.state = {
             webRepPage: true,
-            wriLegPage: true,
-            sentRepPage: true,
-            artSumPage: true,
+            wriLegPage: false,
+            sentRepPage: false,
+            artSumPage: false,
         };
 
         this.logoClick = this.logoClick.bind(this);
@@ -73,11 +73,28 @@ class Results extends Component {
         return (
             <div id="results-page">
                 <ul id="header">
-                    <li className="header-item"><button onClick={this.logoClick}>Prestige</button></li>
-                    <li className="header-item"><button onClick={this.webRepClick}>Website Reputation</button></li>
-                    <li className="header-item"><button onClick={this.wriLegClick}>Writer Legitimacy</button></li>
-                    <li className="header-item"><button onClick={this.sentRepClick}>Sentiment Report</button></li>
-                    <li className="header-item"><button onClick={this.artSumClick}>Article Summary</button></li>
+                    <div id='logo-header'>
+                        <HeaderButton
+                            clickEvent={this.logoClick}
+                            item='Prestige'
+                        />
+                    </div>
+                    <HeaderButton 
+                        clickEvent={this.webRepClick}
+                        item='Website Reputation'
+                    />
+                    <HeaderButton 
+                        clickEvent={this.wriLegClick}
+                        item='Writer Legitimacy'
+                    />
+                    <HeaderButton 
+                        clickEvent={this.sentRepClick}
+                        item='Sentiment Report'
+                    />
+                    <HeaderButton 
+                        clickEvent={this.artSumClick}
+                        item='Article Summary'
+                    />
                 </ul>
 
                 {this.state.webRepPage && 
@@ -106,7 +123,7 @@ class Results extends Component {
                     />
                 }
                 
-                <h1>{this.props.report.article.title}</h1>
+                {/* <h1>{this.props.report.article.title}</h1>
                 <h4>{this.props.report.article.author}</h4>
                 <h2>Website Reputation: {this.props.report.website_reputation}</h2>
                 <h4>Website Rating: {this.props.report.website_rating}</h4>
@@ -115,17 +132,17 @@ class Results extends Component {
                 <h2>Sentiment</h2>
                 <h6>Polarity: {this.props.report.polarity} with {this.props.report.polarity_confidence} confidence</h6>
                 <h2>Summarized Article</h2>
-                {/* <ul>
+                <ul>
                     {#each this.props.report.article.summarized_article}
                     <li>{this}</li>
                     {/each}
-                </ul> */}
+                </ul>
                 <h2>Extracted Concepts</h2>
-                {/* <ul>
+                <ul>
                     {#each this.props.report.main_concepts as |concept|}
                     <li><a href="{concept.dbpedia_resource}">{concept.text}</a> with {concept.relevance} relevance</li>
                     {/each}
-                </ul> */}
+                </ul>
                 <h2>Emotions</h2>
                 <ul>
                     <li>Sadness: {this.props.report.emotions.sadness}</li>
@@ -134,11 +151,29 @@ class Results extends Component {
                     <li>Disgust: {this.props.report.emotions.disgust}</li>
                     <li>Anger: {this.props.report.emotions.anger}</li>
                 </ul>
-                <p>{this.props.report.article.full_article}</p>
+                <p>{this.props.report.article.full_article}</p> */}
                 <button onClick={this.props.newSearchClick}>New Search</button>;
             </div>
         );
     };
+}
+
+class HeaderButton extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+        }
+    }
+
+    render() {
+        return (
+            <div className="header-button">
+                <li className="header-item">
+                    <button onClick={this.props.clickEvent}>{this.props.item}</button>
+                </li>
+            </div>
+        );
+    }
 }
 
 export default Results;
