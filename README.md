@@ -8,48 +8,51 @@ Readers who want to be more informed about the legitimacy of an article or who m
 The user enters the webpage, and sees the option to enter a website url that links to an article. They then press a button to analyze their inputs and are returned with understandable and visually appealing results. Additional features to have the article read out loud and also the option to have it translated will be implemented later.
 
 # Technical
-## Models
-- Results
-
 ## Views
 - Index/Home
-- Text/URL Input
-- Result
+- Website Reputation
+- Writer's Legitimacy
+- Sentiment Report
+- Article Summary
 
-## Routes
-- Index/Home
+## Routes (Slightly inaccurate due to the addition of React)
+- Index/Home/NewAnalysis
   - GET <span></span>www.prestige.com/
-- Result
+- WebsiteReputation/WriterLegitimacy/SentimentReport/ArticleSummary
   - GET <span></span>www.prestige.com/result
   - POST <span></span>www.prestige.com/results
 
 ## Features
-- Input for text and links
+- Input for links
 - Results page with analysis and summary
 - Option to translate the article and its summary
-- Option to see current trending news/topics
 
 ## Languages
 #### Front-End
 * HTML
 * CSS
-* Bootstrap
+* JavaScript
+* Chart.js
 #### Back-End
 * JavaScript
-* jQuery
 * React
 * Node.js
 * Express.js
-* MongoDB
-* IBM Watson Natural Language Classifier, Natural Language Understanding, Tone Analyzer, Language Translator, and Text to Speech
-* WebKnox Text-Processing, Words, 
-* Aylien
+* IBM Watson Natural Language Classifier
+* IBM Watson Personality Insight
+* Aylien Extract
+* Aylien Summarize
+* Aylien Sentiment
+* To be added: 
+  * IBM Watson Natural Language Understanding
+  * IBM Watson Language Translator
+  * IBM Watson Text to Speech
 
 ## Planning
 - Week One
   - Monday July 23, 2018
     - Design document
-    - Node.js, MongoDB, and API setup
+    - Node.js, Express.js and API setup
   - Tuesday July 24, 2018
     - Experiment with APIs and learn their calls
   - Wednesday July 25, 2018
@@ -60,20 +63,22 @@ The user enters the webpage, and sees the option to enter a website url that lin
     - Have working functionality for the webpage
   - Friday July 27, 2018
     - Complete MVP
-    - Start adding additional features
+    - Learn React
+    - Connect the front end with the back end (React & Express.js)
+  - Saturday July 28, 2018
+    - Send url to the back end and receive JSON data
+    - Complete the components and their interaction for React
+    - Create charts using Chart.js and other libraries to visually represent analysis and results
+  - Sunday
+    - CSS and JavaScript animations
+    - Refine design and complete the front-end
+    - Optimize the web page for mobile devices
 - Week Two
   - Monday July 30, 2018
-    - Continue and potentially complete working on adding additional features
-    - Connect the front end with the back end
+    - Upload the page to a web server
   - Tuesday July 31, 2018
-    - Start working on the front end design
-    - Visually represent the analysis and results
   - Wednesday August 1, 2018
-    - Continue working on the front end design
-    - Optimize the web page for mobile devices
   - Thursday August 2, 2018
-    - Refine the design and edge cases
-    - Complete the project and upload it to a web server
   - Friday August 3, 2018
 
 - Week Three
