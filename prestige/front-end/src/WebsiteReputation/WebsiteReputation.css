@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto' 'Segoe';
+}
+
+#web-rep {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'a .'
+                       'b c';
+  
+}
+
+#rep-text {
+  margin: 2% 0 2% 2%;
+  font-size: 2.5rem;
+}
+
+#rep {
+  color: rgb(0, 152, 0);
+}
+
+#url-text {
+  margin: 2% 0 0 2%;
+  font-size: 2rem;
+}
+
+#text {
+  grid-area: 'a';
+  background-color: orange;
+}
+
+#rep-graph {
+  grid-area: 'b';
+  background-color: blue;
+}
+
+#con-graph {
+  grid-area: 'c';
+  background-color: red;
+}

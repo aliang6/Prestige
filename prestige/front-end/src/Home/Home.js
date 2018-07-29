@@ -27,6 +27,7 @@ class Home extends Component {
           </p> */}
   
           <h1 id="logo-title">Prestige</h1>
+          <h2 id="description">Article legitimacy and analysis</h2>
           {this.props.searchComponent}
         </div>
       );

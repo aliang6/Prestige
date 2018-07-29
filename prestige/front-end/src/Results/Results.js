@@ -3,6 +3,7 @@ import WebsiteReputation from '../WebsiteReputation/WebsiteReputation.js';
 import WriterLegitimacy from '../WriterLegitimacy/WriterLegitimacy.js';
 import SentimentReport from '../SentimentReport/SentimentReport.js';
 import ArticleSummary from '../ArticleSummary/ArticleSummary.js';
+import "./Results.css";
 
 class Results extends Component {
     constructor(props) {
@@ -23,6 +24,7 @@ class Results extends Component {
 
     logoClick(event) {
         event.preventDefault();
+        this.props.newSearchClick(event);
     }
 
     webRepClick(event) {
@@ -67,34 +69,45 @@ class Results extends Component {
         });
         console.log(this.state.webRepPage);
     }
-    
 
     render() {
         return (
             <div id="results-page">
-                <ul id="header">
-                    <div id='logo-header'>
+                <ul id="header-list">
+                    <div id='header-logo'>
                         <HeaderButton
                             clickEvent={this.logoClick}
                             item='Prestige'
                         />
                     </div>
-                    <HeaderButton 
-                        clickEvent={this.webRepClick}
-                        item='Website Reputation'
-                    />
-                    <HeaderButton 
-                        clickEvent={this.wriLegClick}
-                        item='Writer Legitimacy'
-                    />
-                    <HeaderButton 
-                        clickEvent={this.sentRepClick}
-                        item='Sentiment Report'
-                    />
-                    <HeaderButton 
-                        clickEvent={this.artSumClick}
-                        item='Article Summary'
-                    />
+                    <div id='header-links'>
+                        <HeaderButton 
+                            clickEvent={this.webRepClick}
+                            item='Website Reputation'
+                        />
+                        <div className="header-spacing"></div>
+                        <HeaderButton 
+                            clickEvent={this.wriLegClick}
+                            item='Writer Legitimacy'
+                        />
+                        <div className="header-spacing"></div>
+                        <HeaderButton 
+                            clickEvent={this.sentRepClick}
+                            item='Sentiment Report'
+                        />
+                        <div className="header-spacing"></div>
+                        <HeaderButton 
+                            clickEvent={this.artSumClick}
+                            item='Article Summary'
+                        />
+                        <div className="header-spacing"></div>
+                        <div id="new-analysis-button">
+                            <HeaderButton 
+                                clickEvent={this.logoClick}
+                                item='New Analysis'
+                            />
+                        </div>
+                    </div>
                 </ul>
 
                 {this.state.webRepPage && 
@@ -152,7 +165,6 @@ class Results extends Component {
                     <li>Anger: {this.props.report.emotions.anger}</li>
                 </ul>
                 <p>{this.props.report.article.full_article}</p> */}
-                <button onClick={this.props.newSearchClick}>New Search</button>;
             </div>
         );
     };
@@ -167,9 +179,9 @@ class HeaderButton extends Component {
 
     render() {
         return (
-            <div className="header-button">
+            <div className="hdr-btn">
                 <li className="header-item">
-                    <button onClick={this.props.clickEvent}>{this.props.item}</button>
+                    <button className="header-button" onClick={this.props.clickEvent}>{this.props.item}</button>
                 </li>
             </div>
         );

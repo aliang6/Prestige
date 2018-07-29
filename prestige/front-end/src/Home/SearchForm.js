@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './SearchForm.css';
 
 class SearchForm extends Component {
     constructor(props){
@@ -18,9 +19,9 @@ class SearchForm extends Component {
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
-          <label> Article Url: </label>
-          <input type="text" name="url_input" value={this.props.url} onChange={this.handleChange} placeholder="Input the url to an article..." />
-          <input type="submit" value="Submit" />
+          <label id="label"></label>
+          <input type="text" id="input" className="custom-underline" name="url_input" value={this.props.url} onChange={this.handleChange} placeholder="Input the url to an article..." />
+          <input type="submit" id="submit-btn" value="Submit" />
         </form>
       );
     }

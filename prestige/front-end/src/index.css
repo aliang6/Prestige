@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-image: url('http://hdqwalls.com/wallpapers/dark-clean-background-4k.jpg');
+  font-family: Helvetica, sans-serif;
+  color: rgba(256, 256, 256, 0.85);
+  /* background-image: url('http://hdqwalls.com/wallpapers/dark-clean-background-4k.jpg'); */
+  background-color: lightsteelblue;
   background-size: cover;
 }
