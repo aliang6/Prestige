@@ -14,8 +14,8 @@ class WebsiteReputation extends Component {
                 <h1 id="rep-text">Website Reputation: <span id="rep">{this.props.reputation}</span></h1>
                 <h3 id="url-text">Website Url: <span id="url">{this.props.url}</span></h3>
                 <div id="graphs">
-                    
                     <DonutGraph 
+                        idName="rep-chart"
                         width="400px"
                         height="400px"
                         data={[this.props.rating, 100-this.props.rating]}
@@ -30,9 +30,8 @@ class WebsiteReputation extends Component {
 class DonutGraph extends Component {
     constructor(props) {
         super(props);
-        //var test;
-        //this.graph = <canvas class="donut-graph" width={this.props.width} height={this.props.height}></canvas>;
-        this.data = {
+        this.graph = <canvas className="donut-graph" width={this.props.width} height={this.props.height}></canvas>;
+        /*this.data = {
             labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
             datasets: [{
                 label: '# of Votes',
@@ -64,7 +63,7 @@ class DonutGraph extends Component {
                     }
                 }]
             }
-        };
+        };*/
         /* var newChart = new Chart(graph, {
             type: 'pie',
             data: {
@@ -72,8 +71,13 @@ class DonutGraph extends Component {
                 labels: this.props.label,
             }
         }); */
+        this.drawChart = this.drawChart.bind(this);
+    }
 
-        /* var myChart = new Chart(graph, {
+    drawChart() {
+        var graph = document.getElementById('repChart');
+        console.log(graph);
+        var myChart = new Chart(graph, {
             type: 'bar',
             data: {
                 labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -108,21 +112,25 @@ class DonutGraph extends Component {
                     }]
                 }
             }
-        });*/
+        });
+    }
+
+    componentDidMount() {
+        this.drawChart();
     }
 
     render() {
         return (
             <div>
-                <Bar
+                <canvas id='repChart' width={this.props.width} height={this.props.height}></canvas>
+                {/* <Bar
                     ref='chart'
                     data={this.data}
                     width={400}
                     height={400}
                     options={this.options}
-                />
+                /> */}
             </div>
-            
         );
     }
 }
