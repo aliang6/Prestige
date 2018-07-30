@@ -114,7 +114,8 @@ class Results extends Component {
                     <WebsiteReputation 
                         reputation={this.props.report.website_reputation} 
                         rating={this.props.report.website_rating}
-                        url="https://"
+                        confidence={this.props.report.reputation_confidence}
+                        url={this.props.report.web_url}
                     />
                 }
                 {this.state.wriLegPage && 
