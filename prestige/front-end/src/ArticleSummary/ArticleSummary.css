@@ -22,7 +22,7 @@ body {
 
 #summary {
   display: flex;
-  justify-content: space-around;
+  justify-content: ;
   align-content: center;
   flex-direction: row;
 }

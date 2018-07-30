@@ -110,63 +110,43 @@ class Results extends Component {
                     </div>
                 </ul>
 
-                {this.state.webRepPage && 
-                    <WebsiteReputation 
-                        reputation={this.props.report.website_reputation} 
-                        rating={this.props.report.website_rating}
-                        confidence={this.props.report.reputation_confidence}
-                        url={this.props.report.web_url}
-                    />
-                }
-                {this.state.wriLegPage && 
-                    <WriterLegitimacy 
-                        author_legitimacy={this.props.report.author_legitimacy} 
-                        personality={this.props.report.author_legitimacy_percentiles}
-                    />
-                }
-                {this.state.sentRepPage &&
-                    <SentimentReport
-                        polarity={this.props.report.polarity}
-                        polarity_confidence={this.props.report.polarity_confidence}
-                        emotions={this.props.report.emotions}
-                    />
-                }
-                {this.state.artSumPage &&
-                    <ArticleSummary
-                        article = {this.props.report.article}
-                        concepts = {this.props.report.main_concepts}
-                    />
-                }
-                
-                {/* <h1>{this.props.report.article.title}</h1>
-                <h4>{this.props.report.article.author}</h4>
-                <h2>Website Reputation: {this.props.report.website_reputation}</h2>
-                <h4>Website Rating: {this.props.report.website_rating}</h4>
-                <h2>Author Legitimacy: {this.props.report.author_legitimacy}</h2>
-                <img id="article-picture" src={"this.props.report.article.main_image"} alt="{this.props.report.article.main_image}"/>
-                <h2>Sentiment</h2>
-                <h6>Polarity: {this.props.report.polarity} with {this.props.report.polarity_confidence} confidence</h6>
-                <h2>Summarized Article</h2>
-                <ul>
-                    {#each this.props.report.article.summarized_article}
-                    <li>{this}</li>
-                    {/each}
-                </ul>
-                <h2>Extracted Concepts</h2>
-                <ul>
-                    {#each this.props.report.main_concepts as |concept|}
-                    <li><a href="{concept.dbpedia_resource}">{concept.text}</a> with {concept.relevance} relevance</li>
-                    {/each}
-                </ul>
-                <h2>Emotions</h2>
-                <ul>
-                    <li>Sadness: {this.props.report.emotions.sadness}</li>
-                    <li>Joy: {this.props.report.emotions.joy}</li>
-                    <li>Fear: {this.props.report.emotions.fear}</li>
-                    <li>Disgust: {this.props.report.emotions.disgust}</li>
-                    <li>Anger: {this.props.report.emotions.anger}</li>
-                </ul>
-                <p>{this.props.report.article.full_article}</p> */}
+                <div id="left-result-section">
+
+                </div>
+
+                <div id="middle-result-section">
+                    {this.state.webRepPage && 
+                        <WebsiteReputation 
+                            reputation={this.props.report.website_reputation} 
+                            rating={this.props.report.website_rating}
+                            confidence={this.props.report.reputation_confidence}
+                            url={this.props.report.web_url}
+                        />
+                    }
+                    {this.state.wriLegPage && 
+                        <WriterLegitimacy 
+                            author_legitimacy={this.props.report.author_legitimacy} 
+                            personality={this.props.report.author_legitimacy_percentiles}
+                        />
+                    }
+                    {this.state.sentRepPage &&
+                        <SentimentReport
+                            polarity={this.props.report.polarity}
+                            polarity_confidence={this.props.report.polarity_confidence}
+                            emotions={this.props.report.emotions}
+                        />
+                    }
+                    {this.state.artSumPage &&
+                        <ArticleSummary
+                            article = {this.props.report.article}
+                            concepts = {this.props.report.main_concepts}
+                        />
+                    }
+                </div>
+
+                <div id="right-result-section">
+
+                </div>
             </div>
         );
     };
