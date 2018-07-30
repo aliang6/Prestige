@@ -121,7 +121,7 @@ class Results extends Component {
                 {this.state.wriLegPage && 
                     <WriterLegitimacy 
                         author_legitimacy={this.props.report.author_legitimacy} 
-                        emotions={this.props.report.author_legitimacy_percentiles}
+                        personality={this.props.report.author_legitimacy_percentiles}
                     />
                 }
                 {this.state.sentRepPage &&

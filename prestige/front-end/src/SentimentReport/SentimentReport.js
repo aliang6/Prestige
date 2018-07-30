@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './SentimentReport.css';
-import {Doughnut} from 'react-chartjs-2';
+import {Pie} from 'react-chartjs-2';
 import {Polar} from 'react-chartjs-2';
 
 class SentimentReport extends Component {
@@ -12,8 +12,8 @@ class SentimentReport extends Component {
             datasets: [{
                 label: 'Polarity',
                 data: [
-                    this.props.polarity_confidence, 
-                    (100 - this.props.polarity_confidence)
+                    this.props.polarity_confidence * 100, 
+                    100 - (this.props.polarity_confidence * 100)
                 ],
                 backgroundColor: [
                     'rgba(30, 144, 255, 0.5)',
@@ -42,11 +42,11 @@ class SentimentReport extends Component {
             datasets: [{
                 label: 'Emotions',
                 data: [
-                    this.props.emotions.sadness,
-                    this.props.emotions.joy,
-                    this.props.emotions.fear,
-                    this.props.emotions.disgust,
-                    this.props.emotions.anger,
+                    this.props.emotions.sadness * 100,
+                    this.props.emotions.joy * 100,
+                    this.props.emotions.fear * 100,
+                    this.props.emotions.disgust * 100,
+                    this.props.emotions.anger * 100,
                 ],
                 backgroundColor: [
                     'rgba(0, 0, 0, 0.6)',
@@ -73,7 +73,7 @@ class SentimentReport extends Component {
         };
 
         this.options = {
-            maintainAspectRatio: false,
+            //maintainAspectRatio: false,
         };
     }
 
@@ -84,7 +84,7 @@ class SentimentReport extends Component {
                 <div id="graphs">
                     <div id="sent-polarity">
                         <h3>Polarity: {this.props.polarity}</h3>
-                        <Doughnut
+                        <Pie
                             ref='chart'
                             data={this.polData}
                             width={400}
