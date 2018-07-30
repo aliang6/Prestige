@@ -28,7 +28,8 @@ class WebsiteReputation extends Component {
 class DonutGraph extends Component {
     constructor(props) {
         super(props);
-        var graph = <canvas class="donut-graph" width={this.props.width} height={this.props.height}></canvas>
+        var test;
+        var graph = <canvas class="donut-graph" width={this.props.width} height={this.props.height}></canvas>;
         /* var newChart = new Chart(graph, {
             type: 'pie',
             data: {
@@ -37,7 +38,7 @@ class DonutGraph extends Component {
             }
         }); */
 
-        var myChart = new Chart(graph, {
+        /* var myChart = new Chart(graph, {
             type: 'bar',
             data: {
                 labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -72,13 +73,17 @@ class DonutGraph extends Component {
                     }]
                 }
             }
-        });
+        });*/
+    }
+
+    componentDidMount() {
+        this.test = <h1>Test</h1>
     }
 
     render() {
         return (
             <div>
-                {this.graph}
+                {this.test}
             </div>
             
         );

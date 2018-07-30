@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const resultsRouter = require('./routes/results'); 
@@ -41,12 +40,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// MongoDB Setup
-const mongoURI = 'mongodb://aliang:0quill1fountain@ds147451.mlab.com:47451/veritas';
-mongoose.connect(mongoURI, {useNewUrlParser: true});
-mongoose.Promise = global.Promise;
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error'));
 
 module.exports = app;
