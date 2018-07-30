@@ -113,6 +113,7 @@ class Results extends Component {
                 {this.state.webRepPage && 
                     <WebsiteReputation 
                         reputation={this.props.report.website_reputation} 
+                        rating={this.props.report.website_rating}
                         url="https://"
                     />
                 }

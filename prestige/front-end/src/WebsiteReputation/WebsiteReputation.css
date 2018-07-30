@@ -4,12 +4,15 @@
   font-family: 'Roboto' 'Segoe';
 }
 
-#web-rep {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'a .'
-                       'b c';
-  
+body {
+  height: 100vh;
+}
+
+#graphs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5%;
 }
 
 #rep-text {
@@ -26,17 +29,10 @@
   font-size: 2rem;
 }
 
-#text {
-  grid-area: 'a';
-  background-color: orange;
-}
-
 #rep-graph {
-  grid-area: 'b';
-  background-color: blue;
+  background-color: red;
 }
 
 #con-graph {
-  grid-area: 'c';
-  background-color: red;
+  background-color: blue;
 }

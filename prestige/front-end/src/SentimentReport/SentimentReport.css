@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto' 'Segoe';
+}
+
+body {
+  height: 100vh;
+}
+
+graphs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#sent-text {
+  margin: 2% 0 2% 2%;
+  font-size: 2.5rem;
+}

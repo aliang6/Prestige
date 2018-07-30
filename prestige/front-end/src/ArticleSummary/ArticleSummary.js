@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './ArticleSummary.css';
 
 class ArticleSummary extends Component {
     constructor(props) {
@@ -22,18 +23,26 @@ class ArticleSummary extends Component {
             <div id="art-sum">
                 <h1 id="art-sum-text">Article Summary</h1>
                 <h3 id="art-title-text">Article Title: {this.props.article.title}</h3>
-                <div id="concept-section">
-                    <h3 id="concept-text">Main Concepts</h3><h3 id="relevance-text">Relevant</h3>
-                </div>
-                <div id="summary-text">
-                    <ul id="summary-list">
-                        <li id="summary-sentence"></li>
-                        <li id="summary-sentence"></li>
-                        <li id="summary-sentence"></li>
-                        <li id="summary-sentence"></li>
-                        <li id="summary-sentence"></li>
-                    </ul>
-                    <button onClick={this.displayFullArticle}>Display Full Article</button>
+                <div id="summary">
+                    <div id="con-rel-section">
+                        <div id="concept-section">
+                            <h3 id="concept-text">Main Concepts</h3>
+                        </div>
+                        <div id="relevance-section">
+                            <h3 id="relevance-text">Relevance</h3>
+                        </div>
+                    </div>
+                    <div id="summary-text">
+                        <h3 id="summary-text">Summary</h3>
+                        <ul id="summary-list">
+                            <li id="summary-sentence"></li>
+                            <li id="summary-sentence"></li>
+                            <li id="summary-sentence"></li>
+                            <li id="summary-sentence"></li>
+                            <li id="summary-sentence"></li>
+                        </ul>
+                        <button onClick={this.displayFullArticle}>Display Full Article</button>
+                    </div>
                 </div>
             </div>
         );

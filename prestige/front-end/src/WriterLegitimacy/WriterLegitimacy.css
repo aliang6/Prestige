@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto' 'Segoe';
+}
+
+body {
+  height: 100vh;
+}
+
+#wri-leg {
+  display: flex;
+  margin: 2%;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#leg-text {
+  grid-area: a;
+  /* margin: 2% 0 2% 2%; */
+  font-size: 2.5rem;
+  text-align: left;
+}
+
+#big-five-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+#facet-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+#big-five-list,
+#list-one,
+#list-two {
+  list-style-type: none;
+}
