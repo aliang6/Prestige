@@ -14,7 +14,7 @@
     "hoek": "^5.0.3",
     "http-errors": "~1.6.2",
     "mongodb": "^3.1.1",
-    "mongoose": "^5.2.5",
+    "mongoose": "^5.2.6",
     "morgan": "~1.9.0",
     "request": "^2.87.0",
     "url-parse": "^1.4.3",

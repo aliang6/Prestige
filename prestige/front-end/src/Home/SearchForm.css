@@ -14,9 +14,9 @@
 
 .search-input { 
   background-color: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.85);;
-  color: rgba(255, 255, 255, 0.85);;
+  color: rgba(255, 255, 255, 0.85);
+  border: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   box-sizing: border-box;
   font-family: 'Simplifica';
   font-size: 2.5rem;
@@ -27,16 +27,26 @@
   transition: .3s ease;
 }
 
-.search-input:focus {
-    color: dodgerblue;
+.search-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 1; /* Firefox */
 }
 
-.search-input:hover {
-    border-bottom: 1px solid transparent;
+.search-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .search-input:focus {
-    border-bottom: 1px solid transparent;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.search-input:hover,
+.search-input:focus {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.85);
 }
 
 .search-underline {
@@ -49,22 +59,6 @@
 }
 
 .search-underline:hover {
-}
-
-.underline::after {
-    content: 'a';
-    display: block;
-	margin: auto;
-	height: 4px;
-	width: 0px;
-	background: transparent;
-    transition: .3s;
-}
-
-.underline:hover::after,
- {
-    width: 100%;
-    background: rgba(66, 161, 255, 0.7);
 }
 
 .submit-btn {
@@ -82,7 +76,8 @@
 }
 
 .submit-btn:hover {
-    background: rgba(66, 161, 255, 0.1);
+    background: rgba(255, 215, 0, 0.1);
     color: rgba(255, 255, 255, 0.85);
     border-color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
 }

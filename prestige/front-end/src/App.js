@@ -3,6 +3,8 @@ import Home from './Home/Home.js';
 import SearchForm from './Home/SearchForm.js';
 import Results from './Results/Results.js';
 
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,18 +23,8 @@ class App extends Component {
     });
   }
 
-  async handleSearchSubmit(event) {
+  handleSearchSubmit(event) {
     event.preventDefault();
-    await fetch('/results', { 
-      method: 'POST',
-      headers: {'Content-Type':'application/json'}, 
-      body: JSON.stringify({ inputUrl: this.state.url }),
-    }).then((res) => {
-      return res.json();
-    }).then((json) => {
-      this.report = JSON.parse(JSON.stringify(json));
-    });
-    console.log(this.report);
     this.setState({
       index: false,
     });
@@ -61,10 +53,17 @@ class App extends Component {
           <Results 
             report = {this.report}
             newSearchClick = {this.handleNewSearch}
+            url = {this.state.url}
           />
         }
       </div>
     )
+  }
+}
+
+class Loading extends Component {
+  constructor(props) {
+    super(props);
   }
 }
 
