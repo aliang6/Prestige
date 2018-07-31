@@ -6,6 +6,7 @@ class SearchForm extends Component {
       super(props);
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleSearchInput = this.handleSearchInput.bind(this);
     }
   
     handleChange(event) {
@@ -15,13 +16,21 @@ class SearchForm extends Component {
     handleSubmit(event) {
       this.props.onButtonClick(event);
     }
+
+    handleSearchInput(event) {
+      event.preventDefault();
+    }
   
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
-          <label id="label"></label>
-          <input type="text" id="input" className="custom-underline" name="url_input" value={this.props.url} onChange={this.handleChange} placeholder="Input the url to an article..." />
-          <input type="submit" id="submit-btn" value="Submit" />
+          <div className="search-container">
+            <button className="search-underline" onClick={this.handleSearchInput}>
+              <input type="text" className="search-input" name="url_input" value={this.props.url} onChange={this.handleChange} placeholder="Input the url to an article..." />
+              <span class="underline"></span>
+            </button>
+            <button type="submit" class="submit-btn" value="Submit">Analyze</button>
+          </div>
         </form>
       );
     }

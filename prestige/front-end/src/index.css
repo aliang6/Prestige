@@ -1,9 +1,19 @@
+@font-face {
+  font-family: 'Simplifica';
+  src: url('./font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
+}
+
+html {
+  font-family: 'Simplifica', 'Helvetica', 'sans-serif';
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Simplifica', 'Helvetica', 'sans-serif';
   color: rgba(256, 256, 256, 0.85);
-  /* background-image: url('http://hdqwalls.com/wallpapers/dark-clean-background-4k.jpg'); */
-  background-color: lightsteelblue;
+  background-image: url('./img/pen2.jpg');
+  /* Photo by Tyler Lastovich from Pexels */
+  background-color: black;
   background-size: cover;
 }

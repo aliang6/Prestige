@@ -1,17 +1,35 @@
+* {
+    border: 1px solid white;
+}
+
 .home {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
     color: #FFFFFF;
+    width: 100%;
 }
 
 #logo-title {
     /*font-family: 'Trebuchet MS', 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;*/
-    font-family: 'Roboto' 'Segoe';
-    font-size: 15rem;
-    letter-spacing: -0.6rem;
+    font-family: 'Roboto', 'Segoe', 'sans-serif';
+    font-size: 14rem;
     color: rgba(256, 256, 256, 0.85);
 }
 
 #description {
     font-size: 2.5rem;
     color: rgba(256, 256, 256, 0.85);
+    margin-left: 20%;
+}
+
+.home-text {
+    align-self: flex-start;
+    width: 50%;
+}
+
+.search-form {
+    margin-top: 15%;
+    align-self: flex-end;
+    width: 50%;
 }

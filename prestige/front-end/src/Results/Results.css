@@ -5,6 +5,10 @@
   font-family: 'Roboto' 'Segoe';
 }
 
+*:focus {
+  outline: none;
+}
+
 #header-list {
   display: flex;
   justify-content: space-between;
@@ -25,6 +29,26 @@
   background-color: transparent;
   border: 0px;
   padding: 15px 5px;
+  transition: 0.3s;
+}
+
+.header-button:hover {
+  color: rgba(66, 161, 255, 0.7);
+}
+
+.header-button::after {
+  content: '';
+  display: block;
+	margin: auto;
+	height: 2px;
+	width: 0px;
+	background: transparent;
+	transition: width .3s ease-out, background-color .3s ease;
+}
+
+.header-button:hover::after {
+	width: 100%;
+	background: rgba(66, 161, 255, 0.7);
 }
 
 #header-logo .header-button {
@@ -39,6 +63,23 @@
 
 .header-spacing {
   height: 35px;
-  width: 1px;
-  background: rgb(30, 144, 255);
+  width: 2px;
+  background: rgba(66, 161, 255, 0.7);
+}
+
+.header-selected {
+  color: rgba(66, 161, 255, 0.7);
+  background-color: transparent;
+  border: 0px;
+  padding: 15px 5px;
+  transition: 0.3s;
+}
+
+.header-selected::after {
+  content: '';
+  display: block;
+	margin: auto;
+	height: 2px;
+	width: 100%;
+	background: rgba(66, 161, 255, 0.7);
 }

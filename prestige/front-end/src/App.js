@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Home from './Home/Home.js';
 import SearchForm from './Home/SearchForm.js';
 import Results from './Results/Results.js';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +10,6 @@ class App extends Component {
       index: true,
       url: '',
     };
-    var report;
     this.handleUrlChange = this.handleUrlChange.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handleNewSearch = this.handleNewSearch.bind(this);

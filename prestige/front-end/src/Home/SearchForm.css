@@ -1,42 +1,88 @@
-.custom-underline {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    padding-bottom: 3px;
+@font-face {
+    font-family: 'Simplifica';
+    src: url('../font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
+  }
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10%;
+    font-family: 'Simplifica', 'Helvetica', 'sans-serif';
 }
 
-.custom-underline::after {
-    content: "";
-    position: absolute;
-    display: block;
-	margin: auto;
-	height: 3px;
-	width: 0px;
-	background: transparent;
-	transition: width .5s ease, background-color .5s ease;
-}
-
-.custom-underline:hover::after {
-    width: 90%;
-    background: blue;
-}
-
-#input { 
+.search-input { 
   background-color: transparent;
   border: none;
-  color: #555;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);;
+  color: rgba(255, 255, 255, 0.85);;
   box-sizing: border-box;
-  font-family: 'Arvo';
+  font-family: 'Simplifica';
   font-size: 2.5rem;
   height: 50px;
-  margin: -25px 0 0 -100px;
-  padding: 10px 0px;
-  position: relative;
-  top: 50%;
-  width: 50%;
+  padding: 10px 0px 3px 0px;
+  width: 100%;
+  text-align: center;
+  transition: .3s ease;
 }
 
-#input:focus {
+.search-input:focus {
     color: dodgerblue;
 }
 
+.search-input:hover {
+    border-bottom: 1px solid transparent;
+}
+
+.search-input:focus {
+    border-bottom: 1px solid transparent;
+}
+
+.search-underline {
+    display: flex;
+    border: none;
+    width: 50%;
+    height: 50px;
+    transition: .3s;
+    background: transparent;
+}
+
+.search-underline:hover {
+}
+
+.underline::after {
+    content: 'a';
+    display: block;
+	margin: auto;
+	height: 4px;
+	width: 0px;
+	background: transparent;
+    transition: .3s;
+}
+
+.underline:hover::after,
+ {
+    width: 100%;
+    background: rgba(66, 161, 255, 0.7);
+}
+
+.submit-btn {
+    display: block;
+    margin-top: 2%;
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 2px;
+    background: transparent;
+    height: 50px;
+    width: 125px;
+    font-size: 1.25rem;
+    transition: .3s;
+    font-family: 'Simplifica';
+}
+
+.submit-btn:hover {
+    background: rgba(66, 161, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.85);
+}

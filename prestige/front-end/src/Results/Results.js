@@ -78,33 +78,39 @@ class Results extends Component {
                         <HeaderButton
                             clickEvent={this.logoClick}
                             item='Prestige'
+                            selected={false}
                         />
                     </div>
                     <div id='header-links'>
                         <HeaderButton 
                             clickEvent={this.webRepClick}
                             item='Website Reputation'
+                            selected={this.state.webRepPage}
                         />
                         <div className="header-spacing"></div>
                         <HeaderButton 
                             clickEvent={this.wriLegClick}
                             item='Writer Legitimacy'
+                            selected={this.state.wriLegPage}
                         />
                         <div className="header-spacing"></div>
                         <HeaderButton 
                             clickEvent={this.sentRepClick}
                             item='Sentiment Report'
+                            selected={this.state.sentRepPage}
                         />
                         <div className="header-spacing"></div>
                         <HeaderButton 
                             clickEvent={this.artSumClick}
                             item='Article Summary'
+                            selected={this.state.artSumPage}
                         />
                         <div className="header-spacing"></div>
                         <div id="new-analysis-button">
                             <HeaderButton 
                                 clickEvent={this.logoClick}
                                 item='New Analysis'
+                                selected={false}
                             />
                         </div>
                     </div>
@@ -163,7 +169,16 @@ class HeaderButton extends Component {
         return (
             <div className="hdr-btn">
                 <li className="header-item">
-                    <button className="header-button" onClick={this.props.clickEvent}>{this.props.item}</button>
+                    {this.props.selected && 
+                        <button className="header-selected" onClick={this.props.clickEvent}>
+                            {this.props.item}
+                        </button>
+                    }
+                    {!this.props.selected && 
+                        <button className="header-button" onClick={this.props.clickEvent}>
+                            {this.props.item}
+                        </button>
+                    }
                 </li>
             </div>
         );
