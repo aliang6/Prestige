@@ -11,9 +11,9 @@
 }
 
 body {
-  /* background-image: url('../img/cow.jpg'); */
-  background: none;
-  background-color: rgba(0, 0, 0, 1);
+  background-image: url('../img/cow.jpg');
+  /* background: none;
+  background-color: rgba(0, 0, 0, 1); */
 }
 
 *:focus {

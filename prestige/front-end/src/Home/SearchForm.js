@@ -28,7 +28,7 @@ class SearchForm extends Component {
             <button className="search-underline" onClick={this.handleSearchInput}>
               <input type="text" className="search-input" name="url_input" value={this.props.url} onChange={this.handleChange} placeholder="Input the url to an article..." />
             </button>
-            <button type="submit" class="submit-btn" value="Submit">Analyze</button>
+            <button type="submit" className="submit-btn" value="Submit">Analyze</button>
           </div>
         </form>
       );

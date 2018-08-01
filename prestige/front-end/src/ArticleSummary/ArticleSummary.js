@@ -26,9 +26,19 @@ class ArticleSummary extends Component {
     render() {
         return (
             <div className="art-sum">
-                <h1 className="art-sum-text">Article Summary</h1>
-                <h3 className="art-title-text">Article Title: {this.props.article.title}</h3>
+                <div className="art-text">
+                    <h1 className="art-sum-text">Article Summary</h1>
+                    <h3 className="art-title-text">Article Title: <span className="art-title-prop">{this.props.article.title}</span></h3>
+                </div>
                 <div className="main-section">
+                    <div className="con-rel-text">
+                        <div className="concept-text">
+                            <h3>Main Concepts and Relevance</h3>
+                        </div>
+                        <div className="summary-text">
+                            <h3>Summary</h3>
+                        </div>
+                    </div>
                     <div className="summary">
                         <div className="con-rel-section">
                             <MainConcepts concepts={this.props.concepts} />
@@ -81,12 +91,13 @@ class SummarizedArticle extends Component {
 
     render() {
         return (
-            <div className="summary-text">
-                <h3 className="summary-text">Summary</h3>
-                <ul className="summary-list">
+            <div className="summary-text-list">
+                <div>
+                    <ul className="summary-list">
                     {this.listSentences}
                 </ul>
-                <button onClick={this.props.displayFullArticle}>Display Full Article</button>
+                <button className="full-art-btn" onClick={this.props.displayFullArticle}>Display Full Article</button>
+                </div>
             </div>
         );
     }
@@ -100,9 +111,6 @@ class MainConcepts extends Component {
     render() {
         return (
             <div className="concept-section">
-                <div className="con-rel-text">
-                    <h3 className="concept-text">Main Concepts and Relevance</h3>
-                </div>
                 <ul className="concept-list">
                     <ConceptTopic concept={this.props.concepts[0]} />
                     <ConceptTopic concept={this.props.concepts[1]} />
@@ -144,7 +152,7 @@ class ConceptTopic extends Component {
         return (
             <div className='concept-name'>
                 <div className="concept-topic">
-                    <li><a href={this.props.concept.dbpedia_resource}>{this.props.concept.text}</a></li>
+                    <li><a target="_blank" href={this.props.concept.dbpedia_resource}>{this.props.concept.text}</a></li>
                 </div>
                 <div className="donut-graph">
                     <Doughnut 

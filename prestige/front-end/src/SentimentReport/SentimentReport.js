@@ -80,18 +80,21 @@ class SentimentReport extends Component {
             maintainAspectRatio: false,
             legend: {
                 display: false,
-            }
-
+            },
         };
 
         this.emOptions ={
             maintainAspectRatio: false,
+            scale: {
+                ticks: {
+                    backdropColor: 'rgba(0, 0, 0, 0)',
+                }
+            },
             legend: {
                 position: 'top',
                 fontColor: 'rgba(255, 255, 255, 1)',
                 fontSize: 10,
-                fontStyle: 'thin',
-            }
+            },
         };
     }
 

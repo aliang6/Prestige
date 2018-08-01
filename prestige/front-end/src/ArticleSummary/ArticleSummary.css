@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  /* border: 0.1px solid white; */
 }
 
 body {
@@ -20,16 +19,38 @@ li {
   margin: 2% 0 2% 2%;
 }
 
+.art-text {
+  align-self: flex-start;
+  color: rgba(255, 215, 0, 0.851);
+  margin-bottom: 2%;
+}
+
 .art-sum-text {
   font-size: 3rem;
+  margin-bottom: 2%;
+}
+
+.art-title-text {
+  font-size: 2rem;
+  margin-bottom: 2%;
+}
+
+.art-title-prop {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.concept-text {
+  margin-bottom: 1%;
+  width: 35%;
   text-align: left;
-  color: rgba(255, 215, 0, 0.85)
 }
 
 .main-section {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 
 .summary {
@@ -40,20 +61,29 @@ li {
   width: 100%;
 }
 
+.con-rel-text {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+}
+
 .con-rel-section {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 50%;
+  width: 35%;
 }
 
 .sum-section {
-  width: 50%;
+  width: 65%;
+  height: 100%;
 }
 
 .concept-text {
   font-size: 2rem;
   color:rgba(255, 215, 0, 0.85);
+  margin-bottom: 1%
 }
 
 .concept-section {
@@ -70,11 +100,64 @@ li {
 
 .concept-topic {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-self: center;
   width: 50%;
+  font-size: 1.5rem;
+  padding-left: 2%;
+}
+
+.concept-topic a {
+  color: rgba(255, 215, 0, 0.85);
 }
 
 .donut-graph {
+  align-self: center;
   width: 50%;
+}
+
+.summary-text-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-start;
+  height: inherit;
+}
+
+.summary-text {
+  color: (255, 215, 0, 0.85);
+  font-size: 2rem;
+  margin-bottom: 1%;
+  color: rgba(255, 215, 0, 0.85);
+  width: 65%;
+  text-align: left;
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  font-size: 1.5rem;
+}
+
+.summary-list li {
+  margin-bottom: 2%
+}
+
+.full-art-btn {
+  color: rgba(255, 215, 0, .85);
+  background-color: transparent;
+  border: 1px solid rgba(255, 215, 0, .85);
+  border-radius: 3px;
+  padding: 15px 5px;
+  transition: 0.3s;
+  font-size: 0.9rem;
+  align-self: center;
+  transition: 0.3s;
+}
+
+.full-art-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }

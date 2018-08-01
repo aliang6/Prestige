@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './WebsiteReputation.css';
 import {Doughnut} from 'react-chartjs-2';
 
-const backColorPos = 'rgba(20, 96, 170, 0.65)';
+const backColorPos = 'rgba(0, 0, 0, 0.65)';
 const backColorNeg = 'rgba(0, 0, 0, 0.65)';
 const hoverBackColorPos = 'rgba(44, 123, 182, 0.85)';
 const hoverBackColorNeg = 'rgba(0, 0, 0, 0.65)';
@@ -78,7 +78,24 @@ class WebsiteReputation extends Component {
                 fontFamily: "'Roboto', sans-serif",
                 fontStyle: 'normal',
                 fontColor: 'rgba(255, 255, 255, 0.9)',
-            }
+            },
+            /* tooltips: {
+                callbacks: {
+                   title: (t, d) => {
+                      return d.labels[t[0].index];
+                   },
+                   label: (t, d) => {
+                        var label = d.datasets[t.datasetIndex].label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+
+                        label += Math.round(t.yLabel * 100) / 100;
+                        return label;
+                   }
+                }
+             } */
         }
     }
 
