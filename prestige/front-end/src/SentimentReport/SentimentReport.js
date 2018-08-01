@@ -77,38 +77,52 @@ class SentimentReport extends Component {
         };
 
         this.polOptions = {
-            //maintainAspectRatio: false,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            }
+
         };
 
         this.emOptions ={
-
+            maintainAspectRatio: false,
+            legend: {
+                position: 'top',
+                fontColor: 'rgba(255, 255, 255, 1)',
+                fontSize: 10,
+                fontStyle: 'thin',
+            }
         };
     }
 
     render() {
         return (
-            <div id="sent-rep">
-                <h1 id="sent-text">Sentiment Report</h1>
-                <div id="graphs">
-                    <div id="sent-polarity">
-                        <h3>Polarity: {this.props.polarity}</h3>
-                        <Pie
-                            ref='chart'
-                            data={this.polData}
-                            width={400}
-                            height={400}
-                            options={this.polOptions}
-                        />
+            <div className="sent-rep">
+                <h1 className="sent-text">Sentiment Report</h1>
+                <div className="graphs">
+                    <div className="sent-polarity">
+                        <h3>Polarity</h3>
+                        <div>
+                            <Pie
+                                ref='chart'
+                                data={this.polData}
+                                width={500}
+                                height={400}
+                                options={this.polOptions}
+                            />
+                        </div>
                     </div>
-                    <div id="sent-emotions">
-                        <h3>Emotions: </h3>
-                        <Polar
-                            ref='chart'
-                            data={this.emData}
-                            width={400}
-                            height={400}
-                            options={this.emOptions}
-                        />
+                    <div className="sent-emotions">
+                        <h3>Emotions</h3>
+                        <div>
+                            <Polar
+                                ref='chart'
+                                data={this.emData}
+                                width={500}
+                                height={400}
+                                options={this.emOptions}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

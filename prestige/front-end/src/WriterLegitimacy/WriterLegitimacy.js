@@ -3,8 +3,8 @@ import './WriterLegitimacy.css';
 import {Pie} from 'react-chartjs-2';
 import {HorizontalBar} from 'react-chartjs-2';
 
-const backColor = 'rgba(0, 0, 0, 0.6)'
-const hoverBackColor = 'rgba(0, 0, 0, 0.8)'
+const backColor = 'rgba(0, 0, 0, 0.6)';
+const hoverBackColor = 'rgba(0, 0, 0, 0.8)';
 const borderColor = 'rgba(255, 215, 0, 1)';
 
 function createTraitData(name, confidence) {
@@ -146,27 +146,36 @@ class FacetGraph extends Component {
                 display: false,
             },
             scales: {
-                gridLines: {
-                    color: 'rgba(255, 215, 0, 1)',
-                    lineWidth: 1,
-                    drawBorder: true,
-                    drawOnChartArea: false,
-                },
                 xAxes: [{
+                    gridLines: {
+                        display: true,
+                        color: 'rgba(255, 215, 0, 1)',
+                        zeroLineColor: 'rgba(255, 215, 0, 1)',
+                        lineWidth: 1,
+                        drawBorder: true,
+                        drawOnChartArea: false,
+                    },
                     ticks: {
                         beginAtZero: true,
                         fontSize: 10, 
                         fontFamily: "'Roboto', sans-serif", 
                         fontColor: 'rgba(255, 255, 255, 0.85)',
-                        fontStyle: 'thin',
+                        fontStyle: 'normal',
                     }
                 }],
                 yAxes: [{
+                    gridLines: {
+                        display: true,
+                        color: 'rgba(255, 215, 0, 1)',
+                        zeroLineColor: 'rgba(255, 215, 0, 1)',
+                        lineWidth: 1,
+                        drawBorder: true,
+                        drawOnChartArea: false,
+                    },
                     ticks: {
-                        fontSize: 10, 
                         fontFamily: "'Roboto', sans-serif", 
                         fontColor: 'rgba(255, 255, 255, 0.85)',
-                        fontStyle: 'thin',
+                        fontStyle: 'normal',
                     }
                 }],
                 ticks: {
@@ -183,7 +192,7 @@ class FacetGraph extends Component {
                 <HorizontalBar
                     ref='chart'
                     height={250}
-                    width={500}
+                    width={600}
                     data={this.props.data}
                     options={this.options}
                 />

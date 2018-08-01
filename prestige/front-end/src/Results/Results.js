@@ -146,7 +146,7 @@ class Results extends Component {
                     </ul>
     
                     <div id="left-result-section">
-    
+
                     </div>
     
                     <div id="middle-result-section">
@@ -180,7 +180,7 @@ class Results extends Component {
                     </div>
     
                     <div id="right-result-section">
-    
+                        
                     </div>
                 </div>
             );

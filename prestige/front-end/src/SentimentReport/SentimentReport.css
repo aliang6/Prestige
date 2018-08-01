@@ -8,13 +8,33 @@ body {
   height: 100vh;
 }
 
-graphs {
+.sent-rep {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.sent-text {
+  margin: 2% 0 2% 2%;
+  font-size: 3rem;
+  text-align: left;
+  color: rgba(255, 215, 0, 0.85)
+}
+
+.graphs {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-#sent-text {
-  margin: 2% 0 2% 2%;
-  font-size: 2.5rem;
+.pol-label,
+.em-label {
+  font-size: 2rem;
+  margin-bottom: 3%;
+}
+
+.sent-polarity h3,
+.sent-emotions h3 {
+  font-size: 2rem;
+  margin-bottom: 2%;
 }

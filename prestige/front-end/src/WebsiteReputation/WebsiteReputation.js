@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import './WebsiteReputation.css';
 import {Doughnut} from 'react-chartjs-2';
 
+const backColorPos = 'rgba(20, 96, 170, 0.65)';
+const backColorNeg = 'rgba(0, 0, 0, 0.65)';
+const hoverBackColorPos = 'rgba(44, 123, 182, 0.85)';
+const hoverBackColorNeg = 'rgba(0, 0, 0, 0.65)';
+const borderColor = 'rgba(255, 215, 0, 1)';
+
 class WebsiteReputation extends Component {
     constructor(props) {
         super(props);
@@ -12,38 +18,36 @@ class WebsiteReputation extends Component {
                 label: 'Website Reputation',
                 data: [this.props.rating, (100 - this.props.rating)],
                 backgroundColor: [
-                    //'rgba(255, 215, 0, 0.65)',
-                    'rgba(0, 0, 0, 0.65)',
-                    'rgba(0, 0, 0, 0.65)',
+                    backColorPos,
+                    backColorNeg
                 ],
                 hoverBackgroundColor: [
-                    'rgba(255, 215, 0, 0.85)',
-                    'rgba(0, 0, 0, 0.85)',
+                    hoverBackColorPos,
+                    hoverBackColorNeg,
                 ],
                 borderColor: [
-                    'rgba(255, 215, 0, 1)',
-                    'rgba(255, 215, 0, 1)',
+                    borderColor,
+                    borderColor,
                 ],
                 borderWidth: 2,
             }],
         }
         this.conData = {
-            labels: ['Confidence', ''],
+            labels: ['Confidence Probability', 'Confidence Probability'],
             datasets: [{
                 label: 'Confidence Interval',
                 data: [this.props.confidence, (100 - this.props.confidence)],
                 backgroundColor: [
-                    //'rgba(255, 215, 0, 0.65)',
-                    'rgba(0, 0, 0, 0.65)',
-                    'rgba(0, 0, 0, 0.65)',
+                    backColorPos,
+                    backColorNeg
                 ],
                 hoverBackgroundColor: [
-                    'rgba(255, 215, 0, 0.85)',
-                    'rgba(0, 0, 0, 0.85)',
+                    hoverBackColorPos,
+                    hoverBackColorNeg,
                 ],
                 borderColor: [
-                    'rgba(255, 215, 0, 1)',
-                    'rgba(255, 215, 0, 1)',
+                    borderColor,
+                    borderColor,
                 ],
                 borderWidth: 2,
             }],
@@ -54,7 +58,7 @@ class WebsiteReputation extends Component {
                 display: false,
             },
             title: {
-                display: true,
+                display: false,
                 text: 'Reputation: ' + this.props.rating + '%',
                 fontSize: 24,
                 fontFamily: "'Roboto', sans-serif",
@@ -68,7 +72,7 @@ class WebsiteReputation extends Component {
                 display: false,
             },
             title: {
-                display: true,
+                display: false,
                 text: 'Confidence: ' + this.props.confidence + '%',
                 fontSize: 24,
                 fontFamily: "'Roboto', sans-serif",
@@ -80,27 +84,33 @@ class WebsiteReputation extends Component {
 
     render() {
         return (
-            <div id="web-rep">
-                <h1 id="rep-text">Website Reputation: <span id="rep">{this.props.reputation}</span></h1>
-                <h3 id="url-text">Website Url: <span id="url">{this.props.url}</span></h3>
-                <div id="graphs">
-                    <div class="donut-graph">
-                        <Doughnut
-                            ref='chart'
-                            data={this.repData}
-                            width={350}
-                            height={350}
-                            options={this.repOptions}
-                        />
+            <div className="web-rep">
+                <h1 className="rep-text">Website Reputation: <span className="rep">{this.props.reputation}</span></h1>
+                <h3 className="url-text">Website Url: <span className="url">{this.props.url}</span></h3>
+                <div className="graphs">
+                    <div className="donut-graph">
+                        <h3>Reputation Rating: {this.props.rating}%</h3>
+                        <div>
+                            <Doughnut
+                                ref='chart'
+                                data={this.repData}
+                                width={350}
+                                height={350}
+                                options={this.repOptions}
+                            />
+                        </div>
                     </div>
-                    <div class="donut-graph">
-                        <Doughnut
-                            ref='chat'
-                            data={this.conData}
-                            width={350}
-                            height={350}
-                            options={this.conOptions}
-                        />
+                    <div className="donut-graph">
+                        <h3>Reputation Confidence: {this.props.confidence}%</h3>
+                        <div>
+                            <Doughnut
+                                ref='chat'
+                                data={this.conData}
+                                width={350}
+                                height={350}
+                                options={this.conOptions}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
