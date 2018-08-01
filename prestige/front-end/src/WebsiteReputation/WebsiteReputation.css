@@ -12,12 +12,13 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 #rep-text {
   margin: 2% 0 2% 2%;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  color: rgba(255, 215, 0, 0.85);
 }
 
 #rep {
@@ -26,7 +27,12 @@ body {
 
 #url-text {
   margin: 2% 0 0 2%;
-  font-size: 2rem;
+  font-size: 3rem;
+  color: rgba(255, 215, 0, 0.85);
+}
+
+#url {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 #rep-graph {

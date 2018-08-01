@@ -5,7 +5,7 @@ import {HorizontalBar} from 'react-chartjs-2';
 
 const backColor = 'rgba(0, 0, 0, 0.6)'
 const hoverBackColor = 'rgba(0, 0, 0, 0.8)'
-const borderColor = 'rgba(30, 144, 255, 1)';
+const borderColor = 'rgba(255, 215, 0, 1)';
 
 function createTraitData(name, confidence) {
     return {
@@ -16,14 +16,8 @@ function createTraitData(name, confidence) {
             backgroundColor: [
                 backColor,
                 backColor,
-                backColor,
-                backColor,
-                backColor,
             ],
             hoverBackgroundColor: [
-                hoverBackColor,
-                hoverBackColor,
-                hoverBackColor,
                 hoverBackColor,
                 hoverBackColor,
             ],
@@ -31,6 +25,7 @@ function createTraitData(name, confidence) {
                 borderColor,
                 borderColor,
             ],
+            borderWidth: 1,
         }]
     };
 }
@@ -45,8 +40,14 @@ function createFacetData(name, confidence) {
             backgroundColor: [
                 backColor,
                 backColor,
+                backColor,
+                backColor,
+                backColor,
             ],
             hoverBackgroundColor: [
+                hoverBackColor,
+                hoverBackColor,
+                hoverBackColor,
                 hoverBackColor,
                 hoverBackColor,
             ],
@@ -57,6 +58,7 @@ function createFacetData(name, confidence) {
                 borderColor,
                 borderColor,
             ],
+            borderWidth: 1,
         }]
     };
 }
@@ -123,7 +125,7 @@ class TraitGraph extends Component {
     render() {
         return (
             <div className='big-five-trait'>
-                <li >{this.props.name}</li>
+                <li class="trait-text">{this.props.name}</li>
                 <Pie
                     ref='chart'
                     data={this.props.data}
@@ -145,15 +147,33 @@ class FacetGraph extends Component {
             },
             scales: {
                 gridLines: {
-                    display: false,
+                    color: 'rgba(255, 215, 0, 1)',
+                    lineWidth: 1,
+                    drawBorder: true,
                     drawOnChartArea: false,
                 },
                 xAxes: [{
                     ticks: {
                         beginAtZero: true,
+                        fontSize: 10, 
+                        fontFamily: "'Roboto', sans-serif", 
+                        fontColor: 'rgba(255, 255, 255, 0.85)',
+                        fontStyle: 'thin',
                     }
-                }]
-            }
+                }],
+                yAxes: [{
+                    ticks: {
+                        fontSize: 10, 
+                        fontFamily: "'Roboto', sans-serif", 
+                        fontColor: 'rgba(255, 255, 255, 0.85)',
+                        fontStyle: 'thin',
+                    }
+                }],
+                ticks: {
+                    fontColor: 'rgba(255, 255, 255, 0.9)',
+                }
+            },
+            
         }
     }
 
@@ -162,6 +182,8 @@ class FacetGraph extends Component {
             <div className='sig-facet'>
                 <HorizontalBar
                     ref='chart'
+                    height={250}
+                    width={500}
                     data={this.props.data}
                     options={this.options}
                 />

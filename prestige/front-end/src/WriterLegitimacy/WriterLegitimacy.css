@@ -18,10 +18,31 @@ body {
 }
 
 #leg-text {
-  grid-area: a;
-  /* margin: 2% 0 2% 2%; */
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-align: left;
+  color: rgba(255, 215, 0, 0.85)
+}
+
+#big-five-text {
+  color: rgba(255, 215, 0, 0.85);
+  font-size: 2rem;
+}
+
+.trait-text {
+  font-size: 1.3rem;
+}
+
+#facet-text { 
+  color: rgba(255, 215, 0, 0.85);
+  font-size: 2rem;
+}
+
+#big-five {
+  margin-top: 2%;
+}
+
+#facet {
+  margin-top: 2%;
 }
 
 #big-five-list {

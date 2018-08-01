@@ -12,20 +12,19 @@ class WebsiteReputation extends Component {
                 label: 'Website Reputation',
                 data: [this.props.rating, (100 - this.props.rating)],
                 backgroundColor: [
-                    //'rgba(30, 144, 255, 0.5)',
-                    'rgba(0, 0, 0, 0.6)',
-                    'rgba(0, 0, 0, 0.6)',
+                    //'rgba(255, 215, 0, 0.65)',
+                    'rgba(0, 0, 0, 0.65)',
+                    'rgba(0, 0, 0, 0.65)',
                 ],
                 hoverBackgroundColor: [
-                    //'rgba(30, 144, 255, 0.8)',
-                    'rgba(0, 0, 0, 0.8)',
-                    'rgba(0, 0, 0, 0.8)',
+                    'rgba(255, 215, 0, 0.85)',
+                    'rgba(0, 0, 0, 0.85)',
                 ],
                 borderColor: [
-                    'rgba(255, 215, 0, 0.85)',
-                    'rgba(213, 0, 0, 0.85)',
+                    'rgba(255, 215, 0, 1)',
+                    'rgba(255, 215, 0, 1)',
                 ],
-                borderWidth: 3,
+                borderWidth: 2,
             }],
         }
         this.conData = {
@@ -34,18 +33,19 @@ class WebsiteReputation extends Component {
                 label: 'Confidence Interval',
                 data: [this.props.confidence, (100 - this.props.confidence)],
                 backgroundColor: [
-                    'rgba(255, 215, 0, 0.5)',
-                    'rgba(213, 0, 0, 0.5)',
+                    //'rgba(255, 215, 0, 0.65)',
+                    'rgba(0, 0, 0, 0.65)',
+                    'rgba(0, 0, 0, 0.65)',
                 ],
                 hoverBackgroundColor: [
-                    'rgba(255, 215, 0, 0.75)',
-                    'rgba(213, 0, 0, 0.75)',
+                    'rgba(255, 215, 0, 0.85)',
+                    'rgba(0, 0, 0, 0.85)',
                 ],
                 borderColor: [
-                    'rgba(255, 215, 0, 0.85)',
-                    'rgba(213, 0, 0, 0.85)',
+                    'rgba(255, 215, 0, 1)',
+                    'rgba(255, 215, 0, 1)',
                 ],
-                borderWidth: 3,
+                borderWidth: 2,
             }],
         }
         this.repOptions = {
@@ -55,9 +55,11 @@ class WebsiteReputation extends Component {
             },
             title: {
                 display: true,
-                text: 'Reputation',
+                text: 'Reputation: ' + this.props.rating + '%',
                 fontSize: 24,
-                fontFamily: "Trebuchet"
+                fontFamily: "'Roboto', sans-serif",
+                fontStyle: 'normal',
+                fontColor: 'rgba(255, 255, 255, 0.9)',
             }
         }
         this.conOptions = {
@@ -67,9 +69,11 @@ class WebsiteReputation extends Component {
             },
             title: {
                 display: true,
-                text: 'Confidence',
+                text: 'Confidence: ' + this.props.confidence + '%',
                 fontSize: 24,
-                fontFamily: "'Helvetica', sans-serif",
+                fontFamily: "'Roboto', sans-serif",
+                fontStyle: 'normal',
+                fontColor: 'rgba(255, 255, 255, 0.9)',
             }
         }
     }
@@ -84,8 +88,8 @@ class WebsiteReputation extends Component {
                         <Doughnut
                             ref='chart'
                             data={this.repData}
-                            width={400}
-                            height={400}
+                            width={350}
+                            height={350}
                             options={this.repOptions}
                         />
                     </div>
@@ -93,8 +97,8 @@ class WebsiteReputation extends Component {
                         <Doughnut
                             ref='chat'
                             data={this.conData}
-                            width={400}
-                            height={400}
+                            width={350}
+                            height={350}
                             options={this.conOptions}
                         />
                     </div>

@@ -3,6 +3,10 @@ import './SentimentReport.css';
 import {Pie} from 'react-chartjs-2';
 import {Polar} from 'react-chartjs-2';
 
+const backColor = 'rgba(0, 0, 0, 0.6)';
+const hoverBackColor = 'rgba(0, 0, 0, 0.8)';
+const borderColor = 'rgba(255, 215, 0, 1)';
+
 class SentimentReport extends Component {
     constructor(props) {
         super(props);
@@ -16,16 +20,16 @@ class SentimentReport extends Component {
                     100 - (this.props.polarity_confidence * 100)
                 ],
                 backgroundColor: [
-                    'rgba(30, 144, 255, 0.5)',
-                    'rgba(0, 0, 0, 0.6)',
+                    backColor,
+                    backColor,
                 ],
                 hoverBackgroundColor: [
-                    'rgba(30, 144, 255, 0.8)',
-                    'rgba(0, 0, 0, 0.8)',
+                    hoverBackColor,
+                    hoverBackColor
                 ],
                 borderColor: [
-                    'rgba(30, 144, 255, 1)',
-                    'rgba(30, 144, 255, 1)',
+                    borderColor,
+                    borderColor,
                 ],
                 borderWidth: 1,
             }],
@@ -49,31 +53,35 @@ class SentimentReport extends Component {
                     this.props.emotions.anger * 100,
                 ],
                 backgroundColor: [
-                    'rgba(0, 0, 0, 0.6)',
-                    'rgba(0, 0, 0, 0.6)',
-                    'rgba(0, 0, 0, 0.6)',
-                    'rgba(0, 0, 0, 0.6)',
-                    'rgba(0, 0, 0, 0.6)',
+                    backColor,
+                    backColor,
+                    backColor,
+                    backColor,
+                    backColor,
                 ],
                 hoverBackgroundColor: [
-                    'rgba(0, 0, 0, 0.8)',
-                    'rgba(0, 0, 0, 0.8)',
-                    'rgba(0, 0, 0, 0.8)',
-                    'rgba(0, 0, 0, 0.8)',
-                    'rgba(0, 0, 0, 0.8)',
+                    hoverBackColor,
+                    hoverBackColor,
+                    hoverBackColor,
+                    hoverBackColor,
+                    hoverBackColor,
                 ],
                 borderColor: [
-                    'rgba(30, 144, 255, 1)',
-                    'rgba(30, 144, 255, 1)',
-                    'rgba(30, 144, 255, 1)',
-                    'rgba(30, 144, 255, 1)',
-                    'rgba(30, 144, 255, 1)',
+                    borderColor,
+                    borderColor,
+                    borderColor,
+                    borderColor,
+                    borderColor,
                 ],
             }],
         };
 
-        this.options = {
+        this.polOptions = {
             //maintainAspectRatio: false,
+        };
+
+        this.emOptions ={
+
         };
     }
 
@@ -89,7 +97,7 @@ class SentimentReport extends Component {
                             data={this.polData}
                             width={400}
                             height={400}
-                            options={this.options}
+                            options={this.polOptions}
                         />
                     </div>
                     <div id="sent-emotions">
@@ -99,7 +107,7 @@ class SentimentReport extends Component {
                             data={this.emData}
                             width={400}
                             height={400}
-                            options={this.options}
+                            options={this.emOptions}
                         />
                     </div>
                 </div>
