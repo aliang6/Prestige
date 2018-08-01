@@ -4,8 +4,6 @@ import WriterLegitimacy from '../WriterLegitimacy/WriterLegitimacy.js';
 import SentimentReport from '../SentimentReport/SentimentReport.js';
 import ArticleSummary from '../ArticleSummary/ArticleSummary.js';
 import "./Results.css";
-import 'epic-spinners/dist/lib/epic-spinners.min.css'
-import {AtomSpinner} from 'epic-spinners/dist/lib/epic-spinners.min.js'
 
 
 class Results extends Component {

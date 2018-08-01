@@ -10,6 +10,11 @@
   font-family: 'Simplifica', 'Roboto', 'Segoe', 'san-serif';
 }
 
+body {
+  background: none;
+  background-color: rgba(0, 0, 0, 1);
+}
+
 *:focus {
   outline: none;
 }
@@ -19,8 +24,10 @@
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  background-color: rgb(45, 45, 45);
+  /* background-color: rgb(45, 45, 45); */
+  background-color: rgb(0, 0, 0);
   font-family: 'Roboto', 'Segoe', 'san-serif';
+  border-bottom: 1px solid rgba(255, 215, 0, 0.4);
 }
 
 #header-links {

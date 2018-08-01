@@ -22,10 +22,10 @@ class WebsiteReputation extends Component {
                     'rgba(0, 0, 0, 0.8)',
                 ],
                 borderColor: [
-                    'rgba(30, 144, 255, 1)',
-                    'rgba(30, 144, 255, 1)',
+                    'rgba(255, 215, 0, 0.85)',
+                    'rgba(213, 0, 0, 0.85)',
                 ],
-                borderWidth: 1,
+                borderWidth: 3,
             }],
         }
         this.conData = {
@@ -34,22 +34,43 @@ class WebsiteReputation extends Component {
                 label: 'Confidence Interval',
                 data: [this.props.confidence, (100 - this.props.confidence)],
                 backgroundColor: [
-                    'rgba(30, 144, 255, 0.5)',
-                    'rgba(0, 0, 0, 0.6)',
+                    'rgba(255, 215, 0, 0.5)',
+                    'rgba(213, 0, 0, 0.5)',
                 ],
                 hoverBackgroundColor: [
-                    'rgba(30, 144, 255, 0.8)',
-                    'rgba(0, 0, 0, 0.8)',
+                    'rgba(255, 215, 0, 0.75)',
+                    'rgba(213, 0, 0, 0.75)',
                 ],
                 borderColor: [
-                    'rgba(30, 144, 255, 1)',
-                    'rgba(30, 144, 255, 1)',
+                    'rgba(255, 215, 0, 0.85)',
+                    'rgba(213, 0, 0, 0.85)',
                 ],
-                borderWidth: 1,
+                borderWidth: 3,
             }],
         }
-        this.options = {
+        this.repOptions = {
             maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            title: {
+                display: true,
+                text: 'Reputation',
+                fontSize: 24,
+                fontFamily: "Trebuchet"
+            }
+        }
+        this.conOptions = {
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            title: {
+                display: true,
+                text: 'Confidence',
+                fontSize: 24,
+                fontFamily: "'Helvetica', sans-serif",
+            }
         }
     }
 
@@ -59,20 +80,24 @@ class WebsiteReputation extends Component {
                 <h1 id="rep-text">Website Reputation: <span id="rep">{this.props.reputation}</span></h1>
                 <h3 id="url-text">Website Url: <span id="url">{this.props.url}</span></h3>
                 <div id="graphs">
-                    <Doughnut
-                        ref='chart'
-                        data={this.repData}
-                        width={400}
-                        height={400}
-                        options={this.options}
-                    />
-                    <Doughnut
-                        ref='chat'
-                        data={this.conData}
-                        width={400}
-                        height={400}
-                        options={this.options}
-                    />
+                    <div class="donut-graph">
+                        <Doughnut
+                            ref='chart'
+                            data={this.repData}
+                            width={400}
+                            height={400}
+                            options={this.repOptions}
+                        />
+                    </div>
+                    <div class="donut-graph">
+                        <Doughnut
+                            ref='chat'
+                            data={this.conData}
+                            width={400}
+                            height={400}
+                            options={this.conOptions}
+                        />
+                    </div>
                 </div>
             </div>
         );
