@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Simplifica';
+  src: url('../font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -160,4 +165,27 @@ li {
 .full-art-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
+}
+
+.fullArticle {
+  color: rgba(255, 255, 255, 1) !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.85);
+  transition: .3s;
+}
+
+.confirmBtn {
+  color: rgba(255, 255, 255, 1) !important;
+  border: 1px solid rgba(255, 215, 0, 0.85) !important;
+  background-color: #000000d9 !important;
+  font-size: 1rem;
+  font-style: 'normal';
+  border-radius: 3px;
+  transition: 0.3s;
+  font-family: 'Simplifica';
+}
+
+.confirmBtn:hover {
+  background-color: rgba(255, 215, 0, 0.1) !important;
 }

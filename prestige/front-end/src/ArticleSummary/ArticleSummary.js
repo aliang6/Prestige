@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './ArticleSummary.css';
 import {Doughnut} from 'react-chartjs-2';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import sweetalert from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
-const MySwal = withReactContent(Swal)
+const Swal = withReactContent(sweetalert);
 
 const backColor = 'rgba(0, 0, 0, 0.6)'
 const hoverBackColor = 'rgba(0, 0, 0, 0.8)'
@@ -14,13 +14,26 @@ class ArticleSummary extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            showFullArticle: false,
         }
         this.displayFullArticle = this.displayFullArticle.bind(this);
     }
 
     displayFullArticle(event) {
         event.preventDefault();
+        Swal.fire({
+            title: this.props.article.title,
+            text: '(Written by ' + this.props.article.author + ') \n' + this.props.article.full_article,
+            imageUrl: this.props.article.main_image,
+            width: '70%',
+            customClass: 'fullArticle',
+            animation: false,
+            buttonStyling: false,
+            confirmButtonClass: 'confirmBtn',
+            confirmButtonColor: '#000000d9',
+            confirmButtonText: 'Close full article',
+
+        });
     }
 
     closeFullArticle(event) {
@@ -61,17 +74,6 @@ class ArticleSummary extends Component {
 }
 
 class FullArticle extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    handleEvent(event){
-        this.props.closeFullArticle(event);
-    }
-
     render() {
         return (
             <div className="full-article-comp">
@@ -79,7 +81,6 @@ class FullArticle extends Component {
                 <h3>{this.props.writer}</h3>
                 <img src={this.props.image} alt={this.props.image} />
                 <p>{this.props.fullArticle}</p>
-                <button onClick={this.handleEvent}>Close Full Article</button> 
             </div>
         );
     }
