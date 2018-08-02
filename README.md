@@ -43,7 +43,7 @@ The user enters the webpage, and sees the option to enter a website url that lin
 * Aylien Extract
 * Aylien Summarize
 * Aylien Sentiment
-* World of Trust
+* Web of Trust
 
 ## Planning
 - Week One
@@ -77,6 +77,7 @@ The user enters the webpage, and sees the option to enter a website url that lin
     - Refining front end design
   - Thursday August 2, 2018
     - Upload the page to Heroku
+    - Completed Version 1.0
   - Friday August 3, 2018
 
 - Week Three
