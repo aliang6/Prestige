@@ -2,15 +2,37 @@ import React, {Component} from 'react';
 import './WebsiteReputation.css';
 import {Doughnut} from 'react-chartjs-2';
 
-const backColorPos = 'rgba(0, 0, 0, 0.65)';
+const backColorPos = 'rgba(55, 132, 192, 0.65)';
 const backColorNeg = 'rgba(0, 0, 0, 0.65)';
-const hoverBackColorPos = 'rgba(44, 123, 182, 0.85)';
+const hoverBackColorPos = 'rgba(55, 132, 192, 0.85)';
 const hoverBackColorNeg = 'rgba(0, 0, 0, 0.65)';
-const borderColor = 'rgba(255, 215, 0, 1)';
+const borderColorPos = 'rgba(55, 132, 192, 1)';
+const borderColorNeg = 'rgba(134, 0, 0, 1)';
 
 class WebsiteReputation extends Component {
     constructor(props) {
         super(props);
+
+        this.reputation = '';
+        switch(this.props.reputation) {
+            case 'Very Poor':
+                this.reputation = <span className='very-poor'>{this.props.reputation}</span>
+                break;
+            case 'Poor':
+                this.reputation = <span className='poor'>{this.props.reputation}</span>
+                break;
+            case 'Unsatisfactory':
+                this.reputation = <span className='unsatisfactory'>{this.props.reputation}</span>
+                break;
+            case 'Good':
+                this.reputation = <span className='good'>{this.props.reputation}</span>
+                break;
+            case 'Excellent':
+                this.reputation = <span className='excellent'>{this.props.reputation}</span>
+                break;
+            default:
+                this.reputation = this.props.reputation
+        };
 
         this.repData = {
             labels: ['Positive', 'Negative'],
@@ -26,8 +48,8 @@ class WebsiteReputation extends Component {
                     hoverBackColorNeg,
                 ],
                 borderColor: [
-                    borderColor,
-                    borderColor,
+                    borderColorPos,
+                    borderColorNeg,
                 ],
                 borderWidth: 2,
             }],
@@ -38,16 +60,16 @@ class WebsiteReputation extends Component {
                 label: 'Confidence Interval',
                 data: [this.props.confidence, (100 - this.props.confidence)],
                 backgroundColor: [
-                    backColorPos,
+                    'rgba(180, 67, 0, 0.65)',
                     backColorNeg
                 ],
                 hoverBackgroundColor: [
-                    hoverBackColorPos,
+                    'rgba(180, 67, 0, 0.85)',
                     hoverBackColorNeg,
                 ],
                 borderColor: [
-                    borderColor,
-                    borderColor,
+                    'rgba(180, 67, 0, 1)',
+                    borderColorNeg,
                 ],
                 borderWidth: 2,
             }],
@@ -102,7 +124,8 @@ class WebsiteReputation extends Component {
     render() {
         return (
             <div className="web-rep">
-                <h1 className="rep-text">Website Reputation: <span className="rep">{this.props.reputation}</span></h1>
+                <h1 className="rep-text">Website Reputation: {this.reputation}</h1>
+                {/* <h3><span className="good">Good</span><span className="unsatisfactory">Unsatisfactory</span><span className="poor">Poor</span><span className="very-poor">Very Poor</span></h3> */}
                 <h3 className="url-text">Website Url: <span className="url">{this.props.url}</span></h3>
                 <div className="graphs">
                     <div className="donut-graph">

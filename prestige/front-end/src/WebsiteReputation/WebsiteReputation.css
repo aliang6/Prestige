@@ -25,6 +25,26 @@ body {
   color: rgb(0, 152, 0);
 }
 
+.excellent {
+  color: rgb(0, 152, 0);
+}
+
+.good {
+  color: rgb(79, 153, 79);
+}
+
+.unsatisfactory {
+  color: rgb(130, 130, 130);
+}
+
+.poor {
+  color: rgb(152, 63, 63);
+}
+
+.very-poor {
+  color: rgb(152, 0, 0);
+}
+
 .url-text {
   margin: 2% 0 0 2%;
   font-size: 3rem;

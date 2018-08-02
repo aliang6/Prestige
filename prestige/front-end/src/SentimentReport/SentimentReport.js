@@ -20,16 +20,16 @@ class SentimentReport extends Component {
                     100 - (this.props.polarity_confidence * 100)
                 ],
                 backgroundColor: [
-                    backColor,
-                    backColor,
+                    'rgba(25, 118, 31, 0.65)',
+                    'rgba(110, 20, 6, 0.65)',
                 ],
                 hoverBackgroundColor: [
-                    hoverBackColor,
-                    hoverBackColor
+                    'rgba(25, 118, 31, 0.85)',
+                    'rgba(110, 20, 6, 0.85)',
                 ],
                 borderColor: [
-                    borderColor,
-                    borderColor,
+                    'rgba(25, 118, 31, 1)',
+                    'rgba(110, 20, 6, 1)',
                 ],
                 borderWidth: 1,
             }],
@@ -53,25 +53,25 @@ class SentimentReport extends Component {
                     this.props.emotions.anger * 100,
                 ],
                 backgroundColor: [
-                    backColor,
-                    backColor,
-                    backColor,
-                    backColor,
-                    backColor,
+                    'rgba(2, 31, 77, 0.65)',
+                    'rgba(255, 248, 0, 0.65)',
+                    'rgba(57, 1, 77, 0.65)',
+                    'rgba(0, 130, 34, 0.65)',
+                    'rgba(189, 9, 0, 0.65)',
                 ],
                 hoverBackgroundColor: [
-                    hoverBackColor,
-                    hoverBackColor,
-                    hoverBackColor,
-                    hoverBackColor,
-                    hoverBackColor,
+                    'rgba(2, 31, 77, 0.85)',
+                    'rgba(255, 248, 0, 0.85)',
+                    'rgba(57, 1, 77, 0.85)',
+                    'rgba(0, 130, 34, 0.85)',
+                    'rgba(189, 9, 0, 0.85)',
                 ],
                 borderColor: [
-                    borderColor,
-                    borderColor,
-                    borderColor,
-                    borderColor,
-                    borderColor,
+                    'rgba(2, 31, 77, 1)',
+                    'rgba(255, 248, 0, 1)',
+                    'rgba(57, 1, 77, 1)',
+                    'rgba(0, 130, 34, 1)',
+                    'rgba(189, 9, 0, 1)',
                 ],
             }],
         };
@@ -88,12 +88,16 @@ class SentimentReport extends Component {
             scale: {
                 ticks: {
                     backdropColor: 'rgba(0, 0, 0, 0)',
+                    fontColor: 'rgba(255, 255, 255, 0.85)',
                 }
             },
             legend: {
                 position: 'top',
-                fontColor: 'rgba(255, 255, 255, 1)',
-                fontSize: 10,
+                labels: {
+                    fontColor: 'rgba(255, 255, 255, 0.85)',
+                },
+                ticks: {
+                }
             },
         };
     }

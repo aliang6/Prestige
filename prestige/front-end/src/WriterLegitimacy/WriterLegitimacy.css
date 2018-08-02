@@ -38,7 +38,7 @@ body {
 }
 
 #big-five {
-  margin-top: 2%;
+  margin-top: 1.5%;
 }
 
 #facet {
@@ -61,5 +61,18 @@ body {
   list-style-type: none;
 }
 
-.big-five-trait {
+.trustworthy {
+  color: rgb(0, 152, 0);
+}
+
+.neutral {
+  color: rgb(130, 130, 130);
+}
+
+.questionable {
+  color: rgb(189, 136, 0);
+}
+
+.untrustworthy{
+  color: rgb(152, 0, 0);
 }

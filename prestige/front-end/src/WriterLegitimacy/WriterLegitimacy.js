@@ -7,57 +7,39 @@ const backColor = 'rgba(0, 0, 0, 0.6)';
 const hoverBackColor = 'rgba(0, 0, 0, 0.8)';
 const borderColor = 'rgba(255, 215, 0, 1)';
 
-function createTraitData(name, confidence) {
+function createTraitData(name, confidence, backColorPos, backColorNeg, hoverColorPos, hoverColorNeg, borderColorPos, borderColorNeg) {
     return {
-        labels: [name, ''],
+        labels: [name, name],
         datasets: [{
             label: name,
             data: [confidence * 100, 100 - confidence * 100],
             backgroundColor: [
-                backColor,
-                backColor,
+                backColorPos,
+                backColorNeg,
             ],
             hoverBackgroundColor: [
-                hoverBackColor,
-                hoverBackColor,
+                hoverColorPos,
+                hoverColorNeg,
             ],
             borderColor: [
-                borderColor,
-                borderColor,
+                borderColorPos,
+                borderColorNeg,
             ],
             borderWidth: 1,
         }]
     };
 }
 
-function createFacetData(name, confidence) {
+function createFacetData(name, confidence, backColor, hoverColor, borderColor) {
     const temp = confidence.map(((x) => {return x * 100}));
     return {
         labels: name,
         datasets: [{
             label: '',
             data: temp,
-            backgroundColor: [
-                backColor,
-                backColor,
-                backColor,
-                backColor,
-                backColor,
-            ],
-            hoverBackgroundColor: [
-                hoverBackColor,
-                hoverBackColor,
-                hoverBackColor,
-                hoverBackColor,
-                hoverBackColor,
-            ],
-            borderColor: [
-                borderColor,
-                borderColor,
-                borderColor,
-                borderColor,
-                borderColor,
-            ],
+            backgroundColor: backColor,
+            hoverBackgroundColor: hoverColor,
+            borderColor: borderColor,
             borderWidth: 1,
         }]
     };
@@ -67,23 +49,74 @@ class WriterLegitimacy extends Component {
     constructor(props) {
         super(props);
         const data = this.props.personality;
-        this.openData = createTraitData('Openness', data.openness);
-        this.consData = createTraitData('Conscientiousness', data.conscientiousness);
-        this.extraData = createTraitData('Extraversion', data.extraversion);
-        this.agreeData = createTraitData('Agreeableness', data.agreeableness);
-        this.neuroData = createTraitData('Neuroticism', data.emotional_range);
+
+        this.author_legitimacy = ''
+        
+        switch(this.props.author_legitimacy) {
+            case 'Untrustworthy':
+                this.author_legitimacy = <span className='untrustworthy'>{this.props.author_legitimacy}</span>
+                break;
+            case 'Questionable':
+                this.author_legitimacy = <span className='questionable'>{this.props.author_legitimacy}</span>
+                break;
+            case 'Neutral':
+                this.author_legitimacy = <span className='neutral'>{this.props.author_legitimacy}</span>
+                break;
+            case 'Trustworthy':
+                this.author_legitimacy = <span className='trustworthy'>{this.props.author_legitimacy}</span>
+                break;
+            default:
+                this.author_legitimacy = this.props.author_legitimacy;
+        }
+
+        // Negatives
+        const backNeg = 'rgba(0, 0, 0, 0.65)';
+        const backHover = 'rgba(0, 0, 0, 0.85)';
+        const backBorder = 'rgba(255, 255, 255, 0.65)';
+        // Open
+        const openBack = 'rgba(207, 115, 13, 0.65)';
+        const openHover = 'rgba(207, 115, 13, 0.85)';
+        const openBorder = 'rgba(207, 115, 13, 1)';
+        // Conscientiousness
+        const consBack = 'rgba(123, 0, 96, 0.65)';
+        const consHover = 'rgba(123, 0, 96, 0.85)';
+        const consBorder = 'rgba(123, 0, 96, 1)';
+        // Extraversion
+        const extraBack = 'rgba(161, 0, 22, 0.65)';
+        const extraHover = 'rgba(161, 0, 22, 0.85)';
+        const extraBorder = 'rgba(161, 0, 22, 1)';
+        // Agreeableness
+        const agreeBack = 'rgba(0, 131, 16, 0.65)';
+        const agreeHover = 'rgba(0, 131, 16, 0.85)';
+        const agreeBorder = 'rgba(0, 131, 16, 1)';
+        // Neuroticism
+        const neuroBack = 'rgba(12, 43, 113, 0.65)';
+        const neuroHover = 'rgba(12, 43, 113, 0.85)';
+        const neuroBorder = 'rgba(12, 43, 113, 1)';
+        this.openData = createTraitData('Openness', data.openness, openBack, backNeg, openHover, backHover, openBorder, backBorder) ;
+        this.consData = createTraitData('Conscientiousness', data.conscientiousness, consBack, backNeg, consHover, backHover, consBorder, backBorder);
+        this.extraData = createTraitData('Extraversion', data.extraversion, extraBack, backNeg, extraHover, backHover, extraBorder, backBorder);
+        this.agreeData = createTraitData('Agreeableness', data.agreeableness, agreeBack, backNeg, agreeHover, backHover, agreeBorder, backBorder);
+        this.neuroData = createTraitData('Neuroticism', data.emotional_range, neuroBack, backNeg, neuroHover, backHover, neuroBorder, backBorder);
         const facetOneNames = ['Morality', 'Dutifulness', 'Cautiousness', 'Intellect', 'Altruism'];
         const facetOneCon = [data.morality, data.dutifulness, data.cautiousness, data.intellect, data.altruism];
-        this.facetOneData = createFacetData(facetOneNames, facetOneCon);
+        const facetOneBack = ['rgba(0, 140, 140, 0.65)', 'rgba(0, 98, 6, 0.65)', 'rgba(233, 108, 0, 0.65)', 'rgba(93, 9, 157, 0.65)', 'rgba(255, 219, 45, 0.65)'];
+        const facetOneHover = ['rgba(0, 140, 140, 0.85)', 'rgba(0, 98, 6, 0.85)', 'rgba(233, 108, 0, 0.85)', 'rgba(93, 9, 157, 0.85)', 'rgba(255, 219, 45, 0.85)'];
+        const facetOneBorder = ['rgba(255, 255, 255, .85)', 'rgba(255, 255, 255, .85)', 'rgba(255, 255, 255, .85)', 'rgba(255, 255, 255, .85)', 'rgba(255, 255, 255, .85)'];
+        this.facetOneData = createFacetData(facetOneNames, facetOneCon, facetOneBack, facetOneHover, facetOneBorder);
         const facetTwoNames = ['Anger', 'Immoderation', 'Imagination', 'Liberalism', 'Self-Efficacy'];
         const facetTwoCon = [data.anger, data.immoderation, data.imagination, data.liberalism, data.self_efficacy];
-        this.facetTwoData = createFacetData(facetTwoNames, facetTwoCon);
+        const facetTwoBack = ['rgba(91, 14, 8, 0.65)', 'rgba(19, 37, 108, 0.65)', 'rgba(13, 99, 210, 0.65)', 'rgba(161, 65, 0, 0.65)', 'rgba(0, 128, 0, 0.65)'];
+        const facetTwoHover = ['rgba(91, 14, 8, 0.85)', 'rgba(19, 37, 108, 0.85)', 'rgba(13, 99, 210, 0.85)', 'rgba(161, 65, 0, 0.85)', 'rgba(0, 128, 0, 0.85)'];
+        const facetTwoBorder = ['rgba(255, 255, 255, .85)', 'rgba(255, 255, 255, .85)', 'rgba(255, 255, 255, .85)', 'rgba(255, 255, 255, .85)', 'rgba(255, 255, 255, .85)'];
+        this.facetTwoData = createFacetData(facetTwoNames, facetTwoCon, facetTwoBack, facetTwoHover, facetTwoBorder);
     }
 
     render() {
         return (
             <div id="wri-leg">
-                <h1 id="leg-text">Writer Legitimacy: <span id="leg">{this.props.author_legitimacy}</span></h1>
+                <h1 id="leg-text">Writer Legitimacy: <span id="leg">{this.author_legitimacy}</span></h1>
+                {/* <h1><span className='trustworthy'>Trustworthy</span><span className='neutral'>Neutral</span><span className='questionable'>Questionable</span><span className='untrustworthy'>Untrustworthy</span></h1> */}
                 <div id="big-five">
                     <h2 id="big-five-text">Big Five Personality Traits</h2>
                     <ul id="big-five-list">
@@ -115,7 +148,7 @@ class TraitGraph extends Component {
     constructor(props) {
         super(props);
         this.options = {
-            //maintainAspectRatio: false,
+            // maintainAspectRatio: false,
             legend: {
                 display: false,
             }
@@ -149,8 +182,8 @@ class FacetGraph extends Component {
                 xAxes: [{
                     gridLines: {
                         display: true,
-                        color: 'rgba(255, 215, 0, 1)',
-                        zeroLineColor: 'rgba(255, 215, 0, 1)',
+                        color: 'rgba(255, 255, 255, 1)',
+                        zeroLineColor: 'rgba(255, 255, 255, 1)',
                         lineWidth: 1,
                         drawBorder: true,
                         drawOnChartArea: false,
@@ -166,8 +199,8 @@ class FacetGraph extends Component {
                 yAxes: [{
                     gridLines: {
                         display: true,
-                        color: 'rgba(255, 215, 0, 1)',
-                        zeroLineColor: 'rgba(255, 215, 0, 1)',
+                        color: 'rgba(255, 255, 255, 1)',
+                        zeroLineColor: 'rgba(255, 255, 255, 1)',
                         lineWidth: 1,
                         drawBorder: true,
                         drawOnChartArea: false,

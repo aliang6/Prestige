@@ -3,6 +3,9 @@
   src: url('../font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
 }
 
+* {
+}
+
 #results-page {
   /* border: 0.1px white solid; */
   margin: 0;

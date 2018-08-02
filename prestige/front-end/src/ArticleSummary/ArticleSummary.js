@@ -116,11 +116,22 @@ class MainConcepts extends Component {
     render() {
         return (
             <div className="concept-section">
-                <ul className="concept-list">
-                    <ConceptTopic concept={this.props.concepts[0]} />
-                    <ConceptTopic concept={this.props.concepts[1]} />
-                    <ConceptTopic concept={this.props.concepts[2]} />
-                </ul>
+                {this.props.concepts &&
+                <div>
+                    <ul className="concept-list">
+                        <ConceptTopic concept={this.props.concepts[0]} />
+                        <ConceptTopic concept={this.props.concepts[1]} />
+                        <ConceptTopic concept={this.props.concepts[2]} />
+                    </ul>
+                </div>
+                }
+                {!this.props.concepts &&
+                <div>
+                    <ul className="concept-list">
+
+                    </ul>
+                </div>
+                }
             </div>
         );
     }
@@ -130,26 +141,29 @@ class ConceptTopic extends Component {
     constructor(props){
         super(props);
         this.data = {
-            labels: '',
+            labels: ['Relevance', 'Relevance'],
             datasets: [{
                 label: '',
                 data: [this.props.concept.relevance * 100, 100 - this.props.concept.relevance * 100],
                 backgroundColor: [
-                    backColor,
+                    'rgba(255, 255, 255, 0.65)',
                     backColor,
                 ],
                 hoverBackgroundColor: [
-                    hoverBackColor,
+                    'rgba(255, 255, 255, 0.85)',
                     hoverBackColor,
                 ],
                 borderColor: [
-                    borderColor,
-                    borderColor,
+                    'rgba(255, 255, 255, 1)',
+                    'rgba(110, 20, 6, 1)',
                 ],
             }],
         };
         this.options = {
             maintainAspectRatio: false,
+            legend: {
+                display: false,
+            }
         }
     }
 

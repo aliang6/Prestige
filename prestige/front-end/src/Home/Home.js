@@ -18,8 +18,8 @@ class Home extends Component {
       return (
         <div className="home">
           <div className="home-text">
-              <h1 id="logo-title">CowMilk</h1>
-              <h2 id="description">I like cows{/* Article legitimacy and analysis */}</h2>
+              <h1 id="logo-title">Prestige</h1>
+              <h2 id="description">Reputability, Integrity, and Sentiment Analysis{/* Article legitimacy and analysis */}</h2>
           </div>
           <div className="search-form">
               {this.props.searchComponent}

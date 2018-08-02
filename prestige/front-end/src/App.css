@@ -4,6 +4,8 @@ html {
 
 body {
   height: 100%;
+  background-color: black;
+  z-index: -3;
 }
 
 #background-image {
@@ -12,9 +14,9 @@ body {
   right: 0;
   z-index: -2;
   display: block;
-  background-color: black;
   background-image: url('./img/pen2.jpg');
   /* Photo by Tyler Lastovich from Pexels */
+  background-color: black;
   background-size: cover;
   transition: 0.3s;
   height: 100%;
