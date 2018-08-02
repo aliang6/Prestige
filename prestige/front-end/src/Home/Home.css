@@ -40,3 +40,30 @@ body{
     width: 50%;
     margin: 15% 0 3% 0;
 }
+
+.home-enter {
+    opacity: 0.01;
+  }
+  
+  .home-enter.home-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  
+  .home-leave {
+    opacity: 1;
+  }
+  
+  .home-leave.home-leave-active {
+    opacity: 0.01;
+    transition: opacity 1s ease-in;
+  }
+  
+  .home-appear {
+    opacity: 0.01;
+  }
+  
+  .home-appear.home-appear-active {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+  }

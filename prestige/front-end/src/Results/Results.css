@@ -102,7 +102,58 @@
   border-radius: 3px;
 }
 
-#middle-result-section > div{
+.header-enter {
+  opacity: 0.01;
+}
+
+.header-enter.header-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.header-leave {
+  opacity: 1;
+}
+
+.header-leave.header-leave-active {
+  opacity: 0.01;
+  transition: opacity 1s ease-in;
+}
+
+.header-appear {
+  opacity: 0.01;
+}
+
+.header-appear.header-appear-active {
+  opacity: 1;
+  transition: opacity 0.25s ease-in;
+}
+
+.content-enter {
+  opacity: 0.01;
+}
+
+.content-enter.content-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.content-leave {
+  opacity: 1;
+}
+
+.content-leave.content-leave-active {
+  opacity: 0.01;
+  transition: opacity 1s ease-in;
+}
+
+.content-appear {
+  opacity: 0.01;
+}
+
+.content-appear.content-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
 }
 
 .loader {
@@ -110,6 +161,33 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.loading-enter {
+  opacity: 0.01;
+}
+
+.loading-enter.loading-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.loading-leave {
+  opacity: 1;
+}
+
+.loading-leave.loading-leave-active {
+  opacity: 0.01;
+  transition: opacity 1s ease-in;
+}
+
+.loading-appear {
+  opacity: 0.01;
+}
+
+.loading-appear.loading-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
 }
 
 .breeding-rhombus-spinner {

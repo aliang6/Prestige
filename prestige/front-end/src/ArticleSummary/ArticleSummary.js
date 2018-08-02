@@ -3,6 +3,7 @@ import './ArticleSummary.css';
 import {Doughnut} from 'react-chartjs-2';
 import sweetalert from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 const Swal = withReactContent(sweetalert);
 
@@ -42,6 +43,13 @@ class ArticleSummary extends Component {
 
     render() {
         return (
+            <CSSTransitionGroup
+                transitionName="content"
+                transitionAppear={true}
+                transitionAppearTimeout={1000}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={1000}
+            >
             <div className="art-sum">
                 <div className="art-text">
                     <h1 className="art-sum-text">Article Summary</h1>
@@ -69,6 +77,7 @@ class ArticleSummary extends Component {
                     </div>
                 </div>
             </div>
+            </CSSTransitionGroup>
         );
     }
 }

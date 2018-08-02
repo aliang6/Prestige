@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './SentimentReport.css';
 import {Pie} from 'react-chartjs-2';
 import {Polar} from 'react-chartjs-2';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 const backColor = 'rgba(0, 0, 0, 0.6)';
 const hoverBackColor = 'rgba(0, 0, 0, 0.8)';
@@ -104,6 +105,13 @@ class SentimentReport extends Component {
 
     render() {
         return (
+            <CSSTransitionGroup
+                transitionName="content"
+                transitionAppear={true}
+                transitionAppearTimeout={1000}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={1000}
+            >
             <div className="sent-rep">
                 <h1 className="sent-text">Sentiment Report</h1>
                 <div className="graphs">
@@ -133,6 +141,7 @@ class SentimentReport extends Component {
                     </div>
                 </div>
             </div>
+            </CSSTransitionGroup>
         );
     }
 }

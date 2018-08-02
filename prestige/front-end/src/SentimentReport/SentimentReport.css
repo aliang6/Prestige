@@ -38,3 +38,57 @@ body {
   font-size: 2rem;
   margin-bottom: 2%;
 }
+
+.content-enter {
+  opacity: 0;
+}
+
+.content-enter.content-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
+
+.content-leave {
+  opacity: 1;
+}
+
+.content-leave.content-leave-active {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.content-appear {
+  opacity: 0;
+}
+
+.content-appear.content-appear-active {
+  opacity: 1;
+  transition: opacity 0.750s ease;
+}
+
+.content-enter {
+  opacity: 0;
+}
+
+.content-enter.content-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
+
+.content-leave {
+  opacity: 1;
+}
+
+.content-leave.content-leave-active {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.content-appear {
+  opacity: 0;
+}
+
+.content-appear.content-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}

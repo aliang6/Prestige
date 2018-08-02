@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import './WriterLegitimacy.css';
 import {Pie} from 'react-chartjs-2';
 import {HorizontalBar} from 'react-chartjs-2';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 const backColor = 'rgba(0, 0, 0, 0.6)';
 const hoverBackColor = 'rgba(0, 0, 0, 0.8)';
 const borderColor = 'rgba(255, 215, 0, 1)';
+
 
 function createTraitData(name, confidence, backColorPos, backColorNeg, hoverColorPos, hoverColorNeg, borderColorPos, borderColorNeg) {
     return {
@@ -114,7 +116,14 @@ class WriterLegitimacy extends Component {
 
     render() {
         return (
-            <div id="wri-leg">
+            <CSSTransitionGroup
+                transitionName="content"
+                transitionAppear={true}
+                transitionAppearTimeout={1000}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={1000}
+            >
+            <div key={this.id} id="wri-leg">
                 <h1 id="leg-text">Writer Legitimacy: <span id="leg">{this.author_legitimacy}</span></h1>
                 {/* <h1><span className='trustworthy'>Trustworthy</span><span className='neutral'>Neutral</span><span className='questionable'>Questionable</span><span className='untrustworthy'>Untrustworthy</span></h1> */}
                 <div id="big-five">
@@ -139,6 +148,7 @@ class WriterLegitimacy extends Component {
                     </ul>
                 </div>
             </div>
+            </CSSTransitionGroup>
         );
     }
 }

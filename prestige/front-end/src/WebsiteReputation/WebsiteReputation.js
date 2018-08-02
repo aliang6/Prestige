@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './WebsiteReputation.css';
 import {Doughnut} from 'react-chartjs-2';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 const backColorPos = 'rgba(55, 132, 192, 0.65)';
 const backColorNeg = 'rgba(0, 0, 0, 0.65)';
@@ -123,7 +124,14 @@ class WebsiteReputation extends Component {
 
     render() {
         return (
-            <div className="web-rep">
+            <CSSTransitionGroup
+                transitionName="content"
+                transitionAppear={true}
+                transitionAppearTimeout={1000}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={1000}
+            >
+            <div key={this.id} className="web-rep">
                 <h1 className="rep-text">Website Reputation: {this.reputation}</h1>
                 {/* <h3><span className="good">Good</span><span className="unsatisfactory">Unsatisfactory</span><span className="poor">Poor</span><span className="very-poor">Very Poor</span></h3> */}
                 <h3 className="url-text">Website Url: <span className="url">{this.props.url}</span></h3>
@@ -154,6 +162,7 @@ class WebsiteReputation extends Component {
                     </div>
                 </div>
             </div>
+            </CSSTransitionGroup>
         );
     }
 }

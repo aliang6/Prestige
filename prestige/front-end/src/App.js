@@ -3,6 +3,7 @@ import Home from './Home/Home.js';
 import SearchForm from './Home/SearchForm.js';
 import Results from './Results/Results.js';
 import './App.css';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 
 class App extends Component {

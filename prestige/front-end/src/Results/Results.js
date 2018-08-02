@@ -4,7 +4,7 @@ import WriterLegitimacy from '../WriterLegitimacy/WriterLegitimacy.js';
 import SentimentReport from '../SentimentReport/SentimentReport.js';
 import ArticleSummary from '../ArticleSummary/ArticleSummary.js';
 import "./Results.css";
-import { rejects } from 'assert';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 
 class Results extends Component {
@@ -83,6 +83,7 @@ class Results extends Component {
             body: JSON.stringify({ inputUrl: this.props.url }),
         }).then((res) => {
             console.log(res.status);
+            console.log(res);
             if(res.status === 500 || res.ok === false){
                 return false;
             }
@@ -90,20 +91,20 @@ class Results extends Component {
         }).then((json) => {
             if(json){
                 this.report = JSON.parse(JSON.stringify(json));
+                console.log(this.report);
                 if(this.report.valid){
                     const back = document.getElementById('background-image');
                     back.style.filter = 'grayscale(50%)';
                     const contentBack = document.getElementById('content');
                     contentBack.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
-                    //setTimeout(() => this.setState({ loading: false, }), 4250);
-                    this.setState({ loading: false });
+                    setTimeout(() => this.setState({ loading: false, }), 4250);
+                    //this.setState({ loading: false });
                 } else {
                     this.props.newSearch();
                 }
             } else {
                 this.props.newSearch();
             }
-            
         });
     }
 
@@ -114,11 +115,27 @@ class Results extends Component {
     render() {
         if(this.state.loading) {
             return (
-                <Loader />
+                <CSSTransitionGroup
+                transitionName="loading"
+                transitionAppear={true}
+                transitionAppearTimeout={1000}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={1000}
+                >
+                    <Loader />
+                </CSSTransitionGroup>
             );
         } else {
             return (
                 <div id="results-page">
+                    <CSSTransitionGroup
+                        transitionName="header"
+                        transitionAppear={true}
+                        transitionAppearTimeout={400}
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={1000}
+                    >
+                    <div>
                     <ul id="header-list">
                         <div id='header-logo'>
                             <HeaderButton
@@ -161,11 +178,13 @@ class Results extends Component {
                             </div>
                         </div>
                     </ul>
+                    </div>
+                    </CSSTransitionGroup>
     
                     <div id="left-result-section">
 
                     </div>
-    
+
                     <div id="middle-result-section">
                         {this.state.webRepPage && 
                             <WebsiteReputation 
@@ -182,11 +201,19 @@ class Results extends Component {
                             />
                         }
                         {this.state.sentRepPage &&
+                            <CSSTransitionGroup
+                                transitionName="content"
+                                transitionAppear={true}
+                                transitionAppearTimeout={750}
+                                transitionEnterTimeout={500}
+                                transitionLeaveTimeout={1000}
+                            >
                             <SentimentReport
                                 polarity={this.report.polarity}
                                 polarity_confidence={this.report.polarity_confidence}
                                 emotions={this.report.emotions}
                             />
+                            </CSSTransitionGroup>
                         }
                         {this.state.artSumPage &&
                             <ArticleSummary
@@ -195,7 +222,6 @@ class Results extends Component {
                             />
                         }
                     </div>
-    
                     <div id="right-result-section">
                         
                     </div>
