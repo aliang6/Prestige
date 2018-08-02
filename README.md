@@ -32,10 +32,10 @@ The user enters the webpage, and sees the option to enter a website url that lin
 * HTML
 * CSS
 * JavaScript
-* Chart.js
-#### Back-End
-* JavaScript
 * React
+* Chart.js
+* SweetAlert2
+#### Back-End
 * Node.js
 * Express.js
 * IBM Watson Natural Language Classifier
@@ -43,10 +43,7 @@ The user enters the webpage, and sees the option to enter a website url that lin
 * Aylien Extract
 * Aylien Summarize
 * Aylien Sentiment
-* To be added: 
-  * IBM Watson Natural Language Understanding
-  * IBM Watson Language Translator
-  * IBM Watson Text to Speech
+* World of Trust
 
 ## Planning
 - Week One
@@ -68,17 +65,18 @@ The user enters the webpage, and sees the option to enter a website url that lin
   - Saturday July 28, 2018
     - Send url to the back end and receive JSON data
     - Complete the components and their interaction for React
-    - Create charts using Chart.js and other libraries to visually represent analysis and results
   - Sunday
-    - CSS and JavaScript animations
-    - Refine design and complete the front-end
-    - Optimize the web page for mobile devices
+    - Create charts to visually represent analysis and results
 - Week Two
   - Monday July 30, 2018
-    - Upload the page to a web server
+    - Complete charts
+    - Refine design and complete the front-end
   - Tuesday July 31, 2018
+    - CSS and JavaScript animations
   - Wednesday August 1, 2018
+    - Refining front end design
   - Thursday August 2, 2018
+    - Upload the page to Heroku
   - Friday August 3, 2018
 
 - Week Three
