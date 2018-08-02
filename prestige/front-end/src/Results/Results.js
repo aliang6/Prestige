@@ -86,6 +86,11 @@ class Results extends Component {
         this.report = JSON.parse(JSON.stringify(json));
         });
         console.log(this.report);
+        const back = document.getElementById('background-image');
+        back.style.filter = 'grayscale(50%)';
+        const contentBack = document.getElementById('content');
+        contentBack.style.backgroundColor = 'rgba(0, 0, 0, 0.4)'
+        //back.style.border = '1px solid rgba(255, 215, 0, 0.4)';
         //setTimeout(() => this.setState({ loading: false, }), 4250);
         this.setState({ loading: false });
     }

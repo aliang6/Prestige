@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import './ArticleSummary.css';
 import {Doughnut} from 'react-chartjs-2';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const backColor = 'rgba(0, 0, 0, 0.6)'
 const hoverBackColor = 'rgba(0, 0, 0, 0.8)'

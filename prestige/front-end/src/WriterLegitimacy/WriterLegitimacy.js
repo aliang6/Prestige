@@ -125,7 +125,7 @@ class TraitGraph extends Component {
     render() {
         return (
             <div className='big-five-trait'>
-                <li class="trait-text">{this.props.name}</li>
+                <li className="trait-text">{this.props.name}</li>
                 <Pie
                     ref='chart'
                     data={this.props.data}

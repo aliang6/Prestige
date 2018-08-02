@@ -8,12 +8,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Simplifica', 'Roboto', 'Segoe', 'san-serif';
-}
-
-body {
-  background-image: url('../img/cow.jpg');
-  /* background: none;
-  background-color: rgba(0, 0, 0, 1); */
+  height: 100%;
 }
 
 *:focus {
@@ -102,6 +97,9 @@ body {
   margin-left: 5px;
   border: 1px solid rgba(255, 215, 0, 0.7);
   border-radius: 3px;
+}
+
+#middle-result-section > div{
 }
 
 .loader {

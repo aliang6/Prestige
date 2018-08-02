@@ -1,28 +1,29 @@
-.App {
-  text-align: center;
+html {
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+  height: 100%;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+#background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -2;
+  display: block;
+  background-color: black;
+  background-image: url('./img/pen2.jpg');
+  /* Photo by Tyler Lastovich from Pexels */
+  background-size: cover;
+  transition: 0.3s;
+  height: 100%;
+  width: 100%;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#content {
+  height: 100vh;
+  width: 100%;
+  transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0);
 }
