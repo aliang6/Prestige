@@ -15,6 +15,7 @@ class App extends Component {
     this.handleUrlChange = this.handleUrlChange.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handleNewSearch = this.handleNewSearch.bind(this);
+    this.newSearch = this.newSearch.bind(this);
   }
 
   handleUrlChange(event) {
@@ -36,8 +37,13 @@ class App extends Component {
     background.style.filter = 'initial';
     const contentBack = document.getElementById('content');
     contentBack.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+    this.newSearch();
+  }
+
+  newSearch(){
     this.setState({
       index: true,
+      url: '',
     });
   }
 
@@ -59,6 +65,7 @@ class App extends Component {
             <Results 
               report = {this.report}
               newSearchClick = {this.handleNewSearch}
+              newSearch = {this.newSearch}
               url = {this.state.url}
             />
           }

@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Simplifica';
     src: url('../font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
-  }
+}
 
 .search-container {
     display: flex;

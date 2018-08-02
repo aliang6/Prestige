@@ -4,6 +4,7 @@ import WriterLegitimacy from '../WriterLegitimacy/WriterLegitimacy.js';
 import SentimentReport from '../SentimentReport/SentimentReport.js';
 import ArticleSummary from '../ArticleSummary/ArticleSummary.js';
 import "./Results.css";
+import { rejects } from 'assert';
 
 
 class Results extends Component {
@@ -77,21 +78,33 @@ class Results extends Component {
 
     async retrieveJSON() {
         await fetch('/results', { 
-        method: 'POST',
-        headers: {'Content-Type':'application/json'}, 
-        body: JSON.stringify({ inputUrl: this.props.url }),
+            method: 'POST',
+            headers: {'Content-Type':'application/json'}, 
+            body: JSON.stringify({ inputUrl: this.props.url }),
         }).then((res) => {
-        return res.json();
+            console.log(res.status);
+            if(res.status === 500 || res.ok === false){
+                return false;
+            }
+            return res.json();
         }).then((json) => {
-        this.report = JSON.parse(JSON.stringify(json));
+            if(json){
+                this.report = JSON.parse(JSON.stringify(json));
+                if(this.report.valid){
+                    const back = document.getElementById('background-image');
+                    back.style.filter = 'grayscale(50%)';
+                    const contentBack = document.getElementById('content');
+                    contentBack.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+                    //setTimeout(() => this.setState({ loading: false, }), 4250);
+                    this.setState({ loading: false });
+                } else {
+                    this.props.newSearch();
+                }
+            } else {
+                this.props.newSearch();
+            }
+            
         });
-        console.log(this.report);
-        const back = document.getElementById('background-image');
-        back.style.filter = 'grayscale(50%)';
-        const contentBack = document.getElementById('content');
-        contentBack.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
-        //setTimeout(() => this.setState({ loading: false, }), 4250);
-        this.setState({ loading: false });
     }
 
     componentDidMount() {

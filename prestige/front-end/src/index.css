@@ -16,15 +16,3 @@ body {
   color: rgba(256, 256, 256, 0.85);
   
 }
-#background-image {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  display: block;
-  background-image: url('./img/pen2.jpg');
-  /* Photo by Tyler Lastovich from Pexels */
-  background-color: black;
-  background-size: cover;
-  transition: 0.5s;
-}
