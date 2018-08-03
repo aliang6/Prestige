@@ -1,0 +1,31 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: black;
+  z-index: -3;
+}
+
+#background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -2;
+  display: block;
+  background-image: url('./img/pen2.jpg');
+  /* Photo by Tyler Lastovich from Pexels */
+  background-color: black;
+  background-size: cover;
+  transition: 0.3s;
+  height: 100%;
+  width: 100%;
+}
+
+#content {
+  height: 100vh;
+  width: 100%;
+  transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0);
+}

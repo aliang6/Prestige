@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto' 'Segoe';
+}
+
+body {
+  height: 100vh;
+}
+
+.graphs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.rep-text {
+  margin: 2% 0 2% 2%;
+  font-size: 3rem;
+  color: rgba(255, 215, 0, 0.85);
+}
+
+.rep {
+  color: rgb(0, 152, 0);
+}
+
+.excellent {
+  color: rgb(0, 152, 0);
+}
+
+.good {
+  color: rgb(79, 153, 79);
+}
+
+.unsatisfactory {
+  color: rgb(130, 130, 130);
+}
+
+.poor {
+  color: rgb(152, 63, 63);
+}
+
+.very-poor {
+  color: rgb(152, 0, 0);
+}
+
+.url-text {
+  margin: 2% 0 0 2%;
+  font-size: 3rem;
+  color: rgba(255, 215, 0, 0.85);
+}
+
+.url {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.donut-graph {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.donut-graph h3 {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1%;
+}
+
+.content-enter {
+  opacity: 0;
+}
+
+.content-enter.content-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.content-leave {
+  opacity: 1;
+}
+
+.content-leave.content-leave-active {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.content-appear {
+  opacity: 0;
+}
+
+.content-appear.content-appear-active {
+  opacity: 1.0;
+  transition: opacity 1s ease-in;
+}

@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'Simplifica';
+    src: url('../font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10%;
+    font-family: 'Simplifica', 'Helvetica', 'sans-serif';
+}
+
+.search-input { 
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  border: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  font-family: 'Simplifica';
+  font-size: 2.5rem;
+  height: 50px;
+  padding: 10px 0px 3px 0px;
+  width: 100%;
+  text-align: center;
+  transition: .3s ease;
+}
+
+.search-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 1; /* Firefox */
+}
+
+.search-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.search-input:hover,
+.search-input:focus {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.search-underline {
+    display: flex;
+    border: none;
+    width: 50%;
+    height: 50px;
+    transition: .3s;
+    background: transparent;
+}
+
+.search-underline:hover {
+}
+
+.submit-btn {
+    display: block;
+    margin-top: 2%;
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 2px;
+    background: transparent;
+    height: 50px;
+    width: 125px;
+    font-size: 1.25rem;
+    transition: .3s;
+    font-family: 'Simplifica';
+}
+
+.submit-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+}

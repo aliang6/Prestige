@@ -1,0 +1,28 @@
+{
+  "name": "front-end",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:4000",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-solid-svg-icons": "^5.2.0",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
+    "chart.js": "^2.7.2",
+    "epic-spinners": "^1.0.3",
+    "i": "^0.3.6",
+    "npm": "^6.3.0",
+    "react": "^16.4.2",
+    "react-chartjs-2": "^2.7.4",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4",
+    "react-transition-group": "^1.2.1",
+    "sweetalert2": "^7.26.9",
+    "sweetalert2-react-content": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

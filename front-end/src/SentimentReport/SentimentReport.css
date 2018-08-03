@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto' 'Segoe';
+}
+
+body {
+  height: 100vh;
+}
+
+.sent-rep {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.sent-text {
+  margin: 2% 0 2% 2%;
+  font-size: 3rem;
+  text-align: left;
+  color: rgba(255, 215, 0, 0.85)
+}
+
+.graphs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pol-label,
+.em-label {
+  font-size: 2rem;
+  margin-bottom: 3%;
+}
+
+.sent-polarity h3,
+.sent-emotions h3 {
+  font-size: 2rem;
+  margin-bottom: 2%;
+}
+
+.content-enter {
+  opacity: 0;
+}
+
+.content-enter.content-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
+
+.content-leave {
+  opacity: 1;
+}
+
+.content-leave.content-leave-active {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.content-appear {
+  opacity: 0;
+}
+
+.content-appear.content-appear-active {
+  opacity: 1;
+  transition: opacity 0.750s ease;
+}
+
+.content-enter {
+  opacity: 0;
+}
+
+.content-enter.content-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
+
+.content-leave {
+  opacity: 1;
+}
+
+.content-leave.content-leave-active {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.content-appear {
+  opacity: 0;
+}
+
+.content-appear.content-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
