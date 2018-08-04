@@ -43,6 +43,7 @@
   padding: 15px 5px;
   transition: 0.3s;
   font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .header-button:hover {
@@ -66,6 +67,10 @@
 #header-logo .header-button {
   font-size: 2rem;
   margin: 0px 3%;
+}
+
+#header-logo .header-button:hover::after {
+  width: 0%;
 }
 
 #header-links .header-button {

@@ -92,3 +92,18 @@ body {
   opacity: 1;
   transition: opacity 1s ease-in;
 }
+
+.help-logo {
+  display: inline-flex;
+  padding-bottom: 4%;
+}
+
+.help-text {
+  font-size: 0.75rem;
+  font-family: 'Raleway';
+}
+
+.text-and-help {
+  display: flex;
+  justify-content: flex-start;
+}

@@ -77,6 +77,10 @@ class Results extends Component {
     }
 
     async retrieveJSON() {
+        const back = document.getElementById('background-image');
+        back.style.filter = 'blur(3px)';
+        const contentBack = document.getElementById('content');
+        contentBack.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
         await fetch('/results', { 
             method: 'POST',
             headers: {'Content-Type':'application/json'}, 
@@ -93,12 +97,8 @@ class Results extends Component {
                 this.report = JSON.parse(JSON.stringify(json));
                 console.log(this.report);
                 if(this.report.valid){
-                    const back = document.getElementById('background-image');
-                    back.style.filter = 'grayscale(50%)';
-                    const contentBack = document.getElementById('content');
-                    contentBack.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
-                    setTimeout(() => this.setState({ loading: false, }), 4250);
-                    //this.setState({ loading: false });
+                    //setTimeout(() => this.setState({ loading: false, }), 4250);
+                    this.setState({ loading: false });
                 } else {
                     this.props.newSearch();
                 }

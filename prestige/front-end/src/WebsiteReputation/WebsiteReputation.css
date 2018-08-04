@@ -94,3 +94,12 @@ body {
   opacity: 1.0;
   transition: opacity 1s ease-in;
 }
+
+.help-logo {
+  padding-bottom: 4%;
+}
+
+.help-text {
+  font-size: 0.75rem;
+  font-family: 'Raleway';
+}
