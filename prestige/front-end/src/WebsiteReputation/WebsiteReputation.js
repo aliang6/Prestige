@@ -139,17 +139,17 @@ class WebsiteReputation extends Component {
                 <div className="graphs">
                     <div className="donut-graph">
                         <h3>Reputation Rating: {this.props.rating}% 
-                            <a data-tip data-for="rep-tool" class="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
+                            <a data-tip data-for="rep-tool" className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
                             <ReactTooltip id='rep-tool' place="top" type="dark" effect="solid">
-                                <p class="help-text">The reputation percentage is the estimate of the collective trust for the target in the given component.
+                                <p className="help-text">The reputation percentage is the estimate of the collective trust for the target in the given component.
                                 <br/>The higher the value, the more the community trusts the website.</p>
                                 <br/>
                                 <ul>
-                                    <li class="help-text">&ge; 80: Excellent</li>
-                                    <li class="help-text">&ge; 60: Good</li>
-                                    <li class="help-text">&ge; 40: Unsatisfactory</li>
-                                    <li class="help-text">&ge; 20: Poor</li>
-                                    <li class="help-text">&ge; 0: Very Poor</li>
+                                    <li className="help-text">&ge; 80: Excellent</li>
+                                    <li className="help-text">&ge; 60: Good</li>
+                                    <li className="help-text">&ge; 40: Unsatisfactory</li>
+                                    <li className="help-text">&ge; 20: Poor</li>
+                                    <li className="help-text">&ge; 0: Very Poor</li>
                                 </ul>
                             </ ReactTooltip>
                         </h3>
@@ -165,9 +165,9 @@ class WebsiteReputation extends Component {
                     </div>
                     <div className="donut-graph">
                         <h3>Reputation Confidence: {this.props.confidence}%
-                            <a data-tip data-for="conf-tool" class="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
+                            <a data-tip data-for="conf-tool" className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
                             <ReactTooltip id='conf-tool' place="top" type="dark" effect="solid">
-                                <p class="help-text">The confidence indicates the estimated reliability of the reputation estimate.
+                                <p className="help-text">The confidence indicates the estimated reliability of the reputation estimate.
                                 <br/>The higher the value, the more reliable the system considers the reputation estimate.</p>
                             </ReactTooltip>
                         </h3>
