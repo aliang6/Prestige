@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto' 'Segoe';
+}
+
+body {
+  height: 100vh;
+}
+
+#wri-leg {
+  display: flex;
+  margin: 2% 2% 1% 2%;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#leg-text {
+  font-size: 3rem;
+  text-align: left;
+  color: rgba(255, 215, 0, 0.85)
+}
+
+#big-five-text {
+  color: rgba(255, 215, 0, 0.85);
+  font-size: 2rem;
+}
+
+.trait-text {
+  font-size: 1.3rem;
+}
+
+#facet-text { 
+  color: rgba(255, 215, 0, 0.85);
+  font-size: 2rem;
+}
+
+#big-five {
+  margin-top: 1.5%;
+}
+
+#facet {
+  margin-top: 1.5%;
+}
+
+#big-five-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+#facet-list {
+  margin-top: -2%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#big-five-list,
+#list-one,
+#list-two {
+  list-style-type: none;
+}
+
+.trustworthy {
+  color: rgb(0, 152, 0);
+}
+
+.neutral {
+  color: rgb(130, 130, 130);
+}
+
+.questionable {
+  color: rgb(189, 136, 0);
+}
+
+.untrustworthy{
+  color: rgb(152, 0, 0);
+}
+
+.content-enter {
+  opacity: 0;
+}
+
+.content-enter.content-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
+
+.content-leave {
+  opacity: 1;
+}
+
+.content-leave.content-leave-active {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.content-appear {
+  opacity: 0;
+}
+
+.content-appear.content-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.text-and-help {
+  display: flex;
+  justify-content: center;
+}
+
+.help-logo {
+  display: inline-flex;
+  padding-bottom: 4%;
+}
+
+.help-text {
+  font-size: 0.75rem;
+  font-family: 'Raleway';
+}
+
+.help-facet {
+  text-align: left;
+}

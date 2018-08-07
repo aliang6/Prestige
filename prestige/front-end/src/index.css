@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Simplifica';
+  src: url('./font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
+}
+
+html {
+  font-family: 'Simplifica', 'Helvetica', 'sans-serif';
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Simplifica', 'Helvetica', 'sans-serif';
+  color: rgba(256, 256, 256, 0.85);
+  
+}

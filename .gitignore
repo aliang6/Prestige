@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+./prestige/routes/results.js
+
+>>>>>>> 2b87c1e91804d5e8d6e2f09baf597d58e41d115c
 # Logs
 logs
 *.log
@@ -5,9 +10,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 # OS Folders
 .DS_Store
 
+=======
+>>>>>>> 2b87c1e91804d5e8d6e2f09baf597d58e41d115c
 # Runtime data
 pids
 *.pid
@@ -61,4 +69,8 @@ typings/
 .env
 
 # next.js build output
+<<<<<<< HEAD
 .next
+=======
+.next
+>>>>>>> 2b87c1e91804d5e8d6e2f09baf597d58e41d115c
