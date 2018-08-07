@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Simplifica';
-  src: url('../font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
+  src: url('./../font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
 }
 
 * {
@@ -192,13 +192,13 @@ li {
 
 .swal2-popup .swal2-content {
   color: rgba(255, 255, 255, 0.85) !important;
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
   text-align: justify !important;
 }
 
 .swal2-popup .swal2-title {
   color: rgba(255, 215, 0, 0.85) !important;
-  font-size: 2rem !important;
+  font-size: 1.5rem !important;
 }
 
 .content-enter {

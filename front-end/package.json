@@ -29,5 +29,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://hidden-tundra-52184.herokuapp.com/"
+  "homepage": "."
 }
