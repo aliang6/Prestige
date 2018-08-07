@@ -62,7 +62,7 @@ class ArticleSummary extends Component {
                             <h3>Main Concepts and Relevance</h3>
                             <a data-tip data-for='rel-help' className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
                             <ReactTooltip id='rel-help' place="top" type="dark" effect="solid">
-                                <p className='help-text'>Higher relevance represents a higher stastical chance of the concept being important in the article.</p>
+                                <p className='help-text'>Higher relevance represents a higher statistical chance of the concept being important in the article.</p>
                             </ReactTooltip>
                         </div>
                         <div className="summary-text">
