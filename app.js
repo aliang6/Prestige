@@ -3,26 +3,27 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const resultsRouter = require('./routes/results'); 
+const resultsRouter = require('./routes/results');
 
 var app = express();
 
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public/build'));
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+//app.use(express.static(path.join(__dirname, '/public/build')));
+
+app.get('/api/results', (req, res) => {
+
+  // Return them as json
+  res.json({
+    hi: hello,
+  });
+});
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/results', resultsRouter);
 
 // catch 404 and forward to error handler

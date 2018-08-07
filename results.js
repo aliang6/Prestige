@@ -4,6 +4,7 @@ const NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-l
 const PersonalityInsightV3 = require('watson-developer-cloud/personality-insights/v3');
 const urlParse = require('url-parse');
 const isUrl = require('is-url');
+require('dotenv').config();
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ var inputUrl = 'http://fortune.com/2018/07/23/elon-musk-tesla-spacex-pedo-guy-co
 var pArr = []; // Array to hold promises
 var cut = 0.5; // Cutoff for author legitimacy
 
-// Legitimacy Variables 
+// Legitimacy Variables
 var website_rating = -1;
 var website_reputation = '';
 var reputation_confidence = '';
@@ -22,12 +23,13 @@ var validUrl = true;
 
 // Web of Trust API Setup
 var wotUrl = 'http://api.mywot.com/0.4/public_link_json?hosts='
-var wotKey = '/&key=49799cafc0ac9cb5e82203e389f6592247fcf1f7';
+var wotKey = process.env.WOT_KEY;
+console.log(wotKey);
 
 // Aylien API Setup
 var aylienHeaders = {
-  'X-AYLIEN-TextAPI-Application-Key': 'bf5aeee4471987b6eb3bc5aa7b660015',
-  'X-AYLIEN-TextAPI-Application-ID': '7d23624c',
+  'X-AYLIEN-TextAPI-Application-Key': process.env.AYLIEN_KEY,
+  'X-AYLIEN-TextAPI-Application-ID': process.env.AYLIEN_ID,
 };
 var aylienUrl = 'https://api.aylien.com/api/v1/';
 var aylienExtractUrl = aylienUrl + 'extract';
@@ -53,8 +55,8 @@ var aylienSentimentForm = {
 // IBM Watson Natural Language Understanding API Setup
 var naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
   version: '2018-03-16',
-  username: 'c673617e-b32d-46cd-8bb9-2ef4ece62c30',
-  password: 'rTghXhfjwGpu',
+  username: process.env.WATSON_UN,
+  password: process.env.WATSON_PN,
   url: 'https://gateway.watsonplatform.net/natural-language-understanding/api'
 });
 var parameters = {
@@ -73,11 +75,14 @@ var parameters = {
   'return_analyzed_text': true
 }
 
+const watsonUserP = process.env.WATSON_UP;
+const watsonPassP = process.env.WATSON_PP;
+
 // IBM Watson Personality Insight API Setup
 var personalityInsight = new PersonalityInsightV3({
   "version": "2017-10-13",
-  "username": "3d92bee7-1e7e-4482-8016-26c840d91b3c",
-  "password": "R0mhWbd4S2Cj",
+  "username": watsonUserP,
+  "password": watsonPassP,
   "url": "https://gateway.watsonplatform.net/personality-insights/api",
 });
 var profileParams = {
@@ -109,7 +114,7 @@ var emotional_range = '';
 
 // API Functions
 function aylienExtract() { // Call Aylien to extract the article and verify if it is valid
-  
+
   return pExtract();
 }
 
@@ -134,7 +139,7 @@ function aylienAPI() { // Call Aylien to summarize and analyze the articles
       resolve('Article retrieved');
     });
   });
-  
+
   var pSummarize = new Promise((resolve, reject) => {
     request.post({ url: aylienSummarizeUrl, form: aylienSummarizeForm, headers: aylienHeaders }, (err, res, body) => {
       body = JSON.parse(body);
@@ -165,7 +170,7 @@ function naturalLanguageAPI() { // Call Watson Natural Language Understanding
   parameters.url = inputUrl;
   var pAnalyze = new Promise((resolve, reject) => {
     naturalLanguageUnderstanding.analyze(parameters, function(err, response) {
-      if (err) { 
+      if (err) {
         console.log(err);
         reject('pAnalyze');
       }
@@ -181,13 +186,13 @@ function naturalLanguageAPI() { // Call Watson Natural Language Understanding
 }
 
 function pPersonality() { // Call Watson Personality Insight
-  return new Promise((resolve, reject) => { 
+  return new Promise((resolve, reject) => {
     profileParams.content = full_article;
     personalityInsight.profile(profileParams, function(error, profile) {
-      if (error) { 
-        console.log(error); 
+      if (error) {
+        console.log(error);
         reject('pPersonality');
-      } 
+      }
       else {
         profile = JSON.parse(JSON.stringify(profile));
         word_count = profile.word_count;
@@ -221,7 +226,7 @@ function determineReputation() { // Call Web of Trust to Assess Website Reputati
       } else {
         website_rating = JSON.parse(body)[web_url]['0'][0];
         reputation_confidence = JSON.parse(body)[web_url]['0'][1];
-        if(website_rating < 20) 
+        if(website_rating < 20)
           website_reputation = 'Very Poor';
         else if(website_rating < 40)
           website_reputation = 'Poor';
@@ -378,8 +383,8 @@ function createReport() { // Create a JSON report with all the information to di
   return jsonReport;
 }
 
-function createFakeReport() { // Fake JSON Report for Styling Purposes 
-  const jsonReport = { 
+function createFakeReport() { // Fake JSON Report for Styling Purposes
+  const jsonReport = {
     valid: 'true',
     web_url: 'www.fortunedotcom.files.wordpress.com',
     website_reputation: 'Excellent',
@@ -401,7 +406,7 @@ function createFakeReport() { // Fake JSON Report for Styling Purposes
       altruism: 0.8885333272943423,
       morality: 0.47914236327575016,
       anger: 0.24742429254664466,
-      immoderation: 0.0363953123115609 
+      immoderation: 0.0363953123115609
     },
     polarity: 'positive',
     polarity_confidence: 0.9301188588142395,
@@ -410,15 +415,15 @@ function createFakeReport() { // Fake JSON Report for Styling Purposes
       author: 'Leon Vanstone',
       full_article: 'Elon Musk has had an interesting few months in the public spotlight, from arguing over royalties for a farting unicorn to accusing a national hero of being a pedophile on Twitter. His behavior within the boardroom seems equally unusual. In a slightly bizarre May conference call, he told investors in Tesla that if they “are concerned about volatility, they should definitely not buy our stock.” To no one’s surprise, Tesla’s share price fell sharply.\n\nWhile investors are justified in worrying about the volatility of the Tesla share price, the more important question may be whether Musk himself is too volatile to run Tesla and SpaceX, the very companies that he founded. Would removing their high-profile CEO be the right move?\n\nTo begin answering this question, we need to remember that SpaceX and Tesla owe much of their success to Musk. To build Tesla, Musk convinced the general public that electric cars were trendy. And with SpaceX, Musk arguably helped to reignite the public’s fascination with space. It was his personality, his branding, and the hype he managed to build around these ventures that resulted in them becoming so popular. Many of the people who invested in his companies did so because ultimately they believed in Musk.\n\nIn this context, removing Musk could be disastrous for the companies he founded—similar to Apple’s struggles after ousting Steve Jobs. There are now many competitors within both the electric car and space transport sectors, and without Musk, SpaceX and Tesla might simply blend in with the rest.\n\nYet despite how essential he is to his companies, Musk is increasingly drawing negative attention to himself in the public eye—which is likely to lead to even more gaffes that are damaging to his companies. And while Musk’s volatility seems to be causing Tesla’s share price the most damage, it is potentially much more problematic for SpaceX.\n\nGoing to space isn’t cheap. The NASA shuttle program cost about $200 billion, and the International Space Station, including other nations’ contributions, cost about $150 billion (through 2015). NASA’s fiscal year 2017 budget was nearly $20 billion.\n\nBudgets of this size must be approved by Congress. Politicians are very interested in getting reelected, and might not want to risk being associated with someone like Musk. In addition, SpaceX directly deals with NASA, a government agency that is famously risk-averse.\n\nA large amount of SpaceX’s revenue comes from government contracts. Musk could be in trouble if the government follows his advice: If you’re concerned about volatility, then don’t buy.\n\nSpaceX is not the only private company launching rockets. If Musk’s public behavior continues along this negative trend, SpaceX may well be forced to distance itself from its founder in order to save its contracts. Without government support, SpaceX would likely collapse rapidly.\n\nTesla and SpaceX have found themselves in a difficult predicament. Musk is far too important to his companies to be removed completely. But if he continues to behave inappropriately, the boards of directors should consider publicly censuring him and demanding a change in behavior. If they don’t begin to take serious action now, they might soon come to find that they’ve lost control of their CEO entirely.\n\nLeon Vanstone is a researcher at the University of Texas and science communicator in Austin.',
       main_image: 'https://fortunedotcom.files.wordpress.com/2018/07/elon-musk.jpg',
-      summarized_article: 
+      summarized_article:
         [ 'While investors are justified in worrying about the volatility of the Tesla share price, the more important question may be whether Musk himself is too volatile to run Tesla and SpaceX, the very companies that he founded.',
           'And with SpaceX, Musk arguably helped to reignite the public’s fascination with space.',
           'There are now many competitors within both the electric car and space transport sectors, and without Musk, SpaceX and Tesla might simply blend in with the rest.',
           'And while Musk’s volatility seems to be causing Tesla’s share price the most damage, it is potentially much more problematic for SpaceX.',
           'If Musk’s public behavior continues along this negative trend, SpaceX may well be forced to distance itself from its founder in order to save its contracts.' ],
-      word_count: 556 
+      word_count: 556
     },
-    main_concepts: 
+    main_concepts:
     [ { text: 'Elon Musk',
         relevance: 0.988617,
         dbpedia_resource: 'http://dbpedia.org/resource/Elon_Musk' },
@@ -433,25 +438,25 @@ function createFakeReport() { // Fake JSON Report for Styling Purposes
       joy: 0.481088,
       fear: 0.437122,
       disgust: 0.116991,
-      anger: 0.162048 
-    }, 
+      anger: 0.162048
+    },
   }
   return jsonReport;
 }
 
 // GET Results Page
-router.get('/', (req, res, next) => {
-  /* const report = createReport();
+/*router.get('/', (req, res, next) => {
+  const report = createReport();
   console.log(report);
-  res.send(report); */
+  res.send(report);
 
-  /* var pExtract = aylienExtract();
+  var pExtract = aylienExtract();
     aylienAPI();
     naturalLanguageAPI();
     determineReputation();
 
     pExtract().then(()=>{
-      Promise.all(pArr).then(() => { 
+      Promise.all(pArr).then(() => {
         if(validUrl){
           console.log('inval1');
           return pPersonality();
@@ -467,11 +472,11 @@ router.get('/', (req, res, next) => {
         console.log('Catch error' + err);
         res.send(report);
       });
-    }); */
-});
+    });
+});*/
 
 // POST Results Page
-/* router.post('/', (req, res) => {
+/*router.post('/', (req, res) => {
   var report = {"valid": false};
   inputUrl = req.body.inputUrl;
   console.log('input url = ' + inputUrl);
@@ -482,7 +487,7 @@ router.get('/', (req, res, next) => {
     naturalLanguageAPI();
     determineReputation();
 
-    Promise.all(pArr).then(() => { 
+    Promise.all(pArr).then(() => {
       if(validUrl){
         console.log('inval1');
         return pPersonality();
@@ -501,12 +506,96 @@ router.get('/', (req, res, next) => {
   } else {
     res.send(report);
   }
-}); */
+});*/
 
-router.post('/', (req, res) => {
+function retrieveReport(input) {
+  inputUrl = input;
+  console.log(inputUrl);
+  var report = {"valid": false};
+  console.log('input url = ' + inputUrl);
+  const goodUrl = isUrl(inputUrl);
+  console.log('isUrl = ' + goodUrl);
+  if(isUrl(inputUrl)){
+    aylienAPI();
+    naturalLanguageAPI();
+    determineReputation();
+
+    Promise.all(pArr).then(() => {
+      if(validUrl){
+        console.log('inval1');
+        return pPersonality();
+      }
+    }).then(() => {
+      if(validUrl){
+        console.log('inval2');
+        assessAuthorLegitimacy();
+        report = createReport();
+        return report;
+      }
+    }).catch((err) => {
+      console.log('Catch error' + err);
+      return report;
+    });
+  } else {
+    return report;
+  }
+
+}
+
+function retrieveFakeReport() {
+  var report = createFakeReport();
+  console.log(report);
+  return report;
+}
+
+/* router.post('/', (req, res) => {
   var report = createFakeReport();
   console.log(report);
   res.send(report);
-});
+}); */
 
-module.exports = router;
+module.exports = {
+  retrieveReport: async function retrieveReport(input){
+    return new Promise((resolve, reject) => {
+      inputUrl = input;
+      console.log(inputUrl);
+      var report = {"valid": false};
+      console.log('input url = ' + inputUrl);
+      const goodUrl = isUrl(inputUrl);
+      console.log('isUrl = ' + goodUrl);
+      if(isUrl(inputUrl)){
+        aylienAPI();
+        naturalLanguageAPI();
+        determineReputation();
+
+        Promise.all(pArr).then(() => {
+          if(validUrl){
+            console.log('inval1');
+            return pPersonality();
+          }
+        }).then(() => {
+          if(validUrl){
+            console.log('inval2');
+            assessAuthorLegitimacy();
+            report = createReport();
+            console.log('1');
+            resolve(report);
+            console.log('2');
+            return;
+          }
+        }).catch((err) => {
+          console.log('Catch error' + err);
+          resolve(report);
+          reject('Retrieve Report reject');
+        });
+      } else {
+        resolve(report);
+      }
+    });
+  },
+  retrieveFakeReport: () => {
+    var report = createFakeReport();
+    console.log('retrieved');
+    return report;
+  },
+}

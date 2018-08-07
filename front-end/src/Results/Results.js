@@ -17,7 +17,7 @@ class Results extends Component {
             sentRepPage: false,
             artSumPage: false,
         };
-        
+
         this.report = '';
         this.logoClick = this.logoClick.bind(this);
         this.webRepClick = this.webRepClick.bind(this);
@@ -42,7 +42,7 @@ class Results extends Component {
         });
         console.log(this.state.webRepPage);
     }
-    
+
     wriLegClick(event) {
         event.preventDefault();
         this.setState({
@@ -77,9 +77,13 @@ class Results extends Component {
     }
 
     async retrieveJSON() {
-        await fetch('/results', { 
+        const back = document.getElementById('background-image');
+        back.style.filter = 'grayscale(50%)';
+        const contentBack = document.getElementById('content');
+        contentBack.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+        await fetch('/api/report', {
             method: 'POST',
-            headers: {'Content-Type':'application/json'}, 
+            headers: {'Content-Type':'application/json'},
             body: JSON.stringify({ inputUrl: this.props.url }),
         }).then((res) => {
             console.log(res.status);
@@ -93,10 +97,6 @@ class Results extends Component {
                 this.report = JSON.parse(JSON.stringify(json));
                 console.log(this.report);
                 if(this.report.valid){
-                    const back = document.getElementById('background-image');
-                    back.style.filter = 'grayscale(50%)';
-                    const contentBack = document.getElementById('content');
-                    contentBack.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
                     setTimeout(() => this.setState({ loading: false, }), 4250);
                     //this.setState({ loading: false });
                 } else {
@@ -145,32 +145,32 @@ class Results extends Component {
                             />
                         </div>
                         <div id='header-links'>
-                            <HeaderButton 
+                            <HeaderButton
                                 clickEvent={this.webRepClick}
                                 item='Website Reputation'
                                 selected={this.state.webRepPage}
                             />
                             <div className="header-spacing"></div>
-                            <HeaderButton 
+                            <HeaderButton
                                 clickEvent={this.wriLegClick}
                                 item='Writer Legitimacy'
                                 selected={this.state.wriLegPage}
                             />
                             <div className="header-spacing"></div>
-                            <HeaderButton 
+                            <HeaderButton
                                 clickEvent={this.sentRepClick}
                                 item='Sentiment Report'
                                 selected={this.state.sentRepPage}
                             />
                             <div className="header-spacing"></div>
-                            <HeaderButton 
+                            <HeaderButton
                                 clickEvent={this.artSumClick}
                                 item='Article Summary'
                                 selected={this.state.artSumPage}
                             />
                             <div className="header-spacing"></div>
                             <div id="new-analysis-button">
-                                <HeaderButton 
+                                <HeaderButton
                                     clickEvent={this.logoClick}
                                     item='New Analysis'
                                     selected={false}
@@ -180,23 +180,23 @@ class Results extends Component {
                     </ul>
                     </div>
                     </CSSTransitionGroup>
-    
+
                     <div id="left-result-section">
 
                     </div>
 
                     <div id="middle-result-section">
-                        {this.state.webRepPage && 
-                            <WebsiteReputation 
-                                reputation={this.report.website_reputation} 
+                        {this.state.webRepPage &&
+                            <WebsiteReputation
+                                reputation={this.report.website_reputation}
                                 rating={this.report.website_rating}
                                 confidence={this.report.reputation_confidence}
                                 url={this.report.web_url}
                             />
                         }
-                        {this.state.wriLegPage && 
-                            <WriterLegitimacy 
-                                author_legitimacy={this.report.author_legitimacy} 
+                        {this.state.wriLegPage &&
+                            <WriterLegitimacy
+                                author_legitimacy={this.report.author_legitimacy}
                                 personality={this.report.author_legitimacy_percentiles}
                             />
                         }
@@ -223,11 +223,11 @@ class Results extends Component {
                         }
                     </div>
                     <div id="right-result-section">
-                        
+
                     </div>
                 </div>
             );
-        }  
+        }
     };
 }
 
@@ -242,12 +242,12 @@ class HeaderButton extends Component {
         return (
             <div className="hdr-btn">
                 <li className="header-item">
-                    {this.props.selected && 
+                    {this.props.selected &&
                         <button className="header-selected" onClick={this.props.clickEvent}>
                             {this.props.item}
                         </button>
                     }
-                    {!this.props.selected && 
+                    {!this.props.selected &&
                         <button className="header-button" onClick={this.props.clickEvent}>
                             {this.props.item}
                         </button>
