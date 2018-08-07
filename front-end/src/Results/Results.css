@@ -3,10 +3,6 @@
   src: url('../font/SIMPLIFICA/SIMPLIFICA\ Typeface.ttf')
 }
 
-* {
-  font-family: 'Simplifica', 'Roboto', 'Segoe', 'san-serif';
-}
-
 #results-page {
   /* border: 0.1px white solid; */
   margin: 0;
@@ -35,6 +31,7 @@
   justify-content: space-between;
   align-items: center;
   margin-right: 10px;
+  font-family: 'Roboto', 'Segoe', 'san-serif';
 }
 
 .header-button {

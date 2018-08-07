@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "build": "cd front-end && npm run build && cd .. && rm -r ./public/build && mv ./front-end/build ./public/"
+    "buildic": "cd front-end && npm run build && cd .. && rm -r ./public/build && mv ./front-end/build ./public/"
   },
   "dependencies": {
     "chart.js": "^2.7.2",
