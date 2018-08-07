@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './ArticleSummary.css';
-import {Doughnut} from 'react-chartjs-2';
+import {HorizontalBar} from 'react-chartjs-2';
 import sweetalert from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { CSSTransitionGroup } from 'react-transition-group';
+import ReactTooltip from 'react-tooltip';
 
 const Swal = withReactContent(sweetalert);
 
@@ -59,6 +60,10 @@ class ArticleSummary extends Component {
                     <div className="con-rel-text">
                         <div className="concept-text">
                             <h3>Main Concepts and Relevance</h3>
+                            <a data-tip data-for='rel-help' className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
+                            <ReactTooltip id='rel-help' place="top" type="dark" effect="solid">
+                                <p className='help-text'>Higher relevance represents a higher stastical chance of the concept being important in the article.</p>
+                            </ReactTooltip>
                         </div>
                         <div className="summary-text">
                             <h3>Summary</h3>
@@ -69,9 +74,9 @@ class ArticleSummary extends Component {
                             <MainConcepts concepts={this.props.concepts} />
                         </div>
                         <div className="sum-section">
-                            <SummarizedArticle 
-                                article={this.props.article} 
-                                displayFullArticle={this.displayFullArticle} 
+                            <SummarizedArticle
+                                article={this.props.article}
+                                displayFullArticle={this.displayFullArticle}
                             />
                         </div>
                     </div>
@@ -108,9 +113,10 @@ class SummarizedArticle extends Component {
             <div className="summary-text-list">
                 <div>
                     <ul className="summary-list">
-                    {this.listSentences}
-                </ul>
-                <button className="full-art-btn" onClick={this.props.displayFullArticle}>Display Full Article</button>
+                        {this.listSentences}
+                    </ul>
+                    <button className="full-art-btn" onClick={this.props.displayFullArticle}>Display Full Article</button>
+                    <button className="link-btn full-art-btn"><a target="_blank" href={this.props.article.article_link}>Link to full article</a></button>
                 </div>
             </div>
         );
@@ -128,9 +134,9 @@ class MainConcepts extends Component {
                 {this.props.concepts &&
                 <div>
                     <ul className="concept-list">
-                        <ConceptTopic concept={this.props.concepts[0]} />
-                        <ConceptTopic concept={this.props.concepts[1]} />
-                        <ConceptTopic concept={this.props.concepts[2]} />
+                        <ConceptTopic concept={this.props.concepts[0]} back_color='rgba(255, 215, 0, .65)' hover_color='rgba(255, 215, 0, .85)' border_color='rgba(255, 215, 0, 1)' />
+                        <ConceptTopic concept={this.props.concepts[1]} back_color='rgba(192, 192, 192, .65)' hover_color='rgba(192, 192, 192, .85)' border_color='rgba(192, 192, 192, 1)' />
+                        <ConceptTopic concept={this.props.concepts[2]} back_color='rgba(205, 127, 50, .65)' hover_color='rgba(205, 127, 50, .85)' border_color='rgba(205, 127, 50, 1)' />
                     </ul>
                 </div>
                 }
@@ -150,20 +156,20 @@ class ConceptTopic extends Component {
     constructor(props){
         super(props);
         this.data = {
-            labels: ['Relevance', 'Relevance'],
+            labels: [],
             datasets: [{
                 label: '',
-                data: [this.props.concept.relevance * 100, 100 - this.props.concept.relevance * 100],
+                data: [this.props.concept.relevance * 100],
                 backgroundColor: [
-                    'rgba(255, 255, 255, 0.65)',
+                    this.props.back_color,
                     backColor,
                 ],
                 hoverBackgroundColor: [
-                    'rgba(255, 255, 255, 0.85)',
+                    this.props.hover_color,,
                     hoverBackColor,
                 ],
                 borderColor: [
-                    'rgba(255, 255, 255, 1)',
+                    this.props.border_color,
                     'rgba(110, 20, 6, 1)',
                 ],
             }],
@@ -172,7 +178,35 @@ class ConceptTopic extends Component {
             maintainAspectRatio: false,
             legend: {
                 display: false,
-            }
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+                        fontSize: 10,
+                        fontFamily: "'Roboto', sans-serif",
+                        fontColor: 'rgba(255, 255, 255, 0.85)',
+                        fontStyle: 'normal',
+                        beginAtZero: true,
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: false,
+                    },
+                    ticks: {
+                        fontFamily: "'Roboto', sans-serif",
+                        fontColor: 'rgba(255, 255, 255, 0.85)',
+                        fontStyle: 'normal',
+                    }
+                }],
+                ticks: {
+                    fontColor: 'rgba(255, 255, 255, 0.9)',
+                }
+            },
+
         }
     }
 
@@ -180,10 +214,10 @@ class ConceptTopic extends Component {
         return (
             <div className='concept-name'>
                 <div className="concept-topic">
-                    <li><a target="_blank" href={this.props.concept.dbpedia_resource}>{this.props.concept.text}</a></li>
+                    <li><a target="_blank" className="con-link" href={this.props.concept.dbpedia_resource}>{this.props.concept.text}</a></li>
                 </div>
                 <div className="donut-graph">
-                    <Doughnut 
+                    <HorizontalBar
                         ref='chart'
                         data={this.data}
                         width={100}

@@ -376,6 +376,7 @@ function createReport() { // Create a JSON report with all the information to di
         "main_image": main_image,
         "summarized_article": summarized_article,
         "word_count": word_count,
+        "article_link": inputUrl,
     },
     "main_concepts": concepts,
     "emotions": emotions,
@@ -421,7 +422,8 @@ function createFakeReport() { // Fake JSON Report for Styling Purposes
           'There are now many competitors within both the electric car and space transport sectors, and without Musk, SpaceX and Tesla might simply blend in with the rest.',
           'And while Musk’s volatility seems to be causing Tesla’s share price the most damage, it is potentially much more problematic for SpaceX.',
           'If Musk’s public behavior continues along this negative trend, SpaceX may well be forced to distance itself from its founder in order to save its contracts.' ],
-      word_count: 556
+      word_count: 556,
+      article_link: 'http://fortune.com/2018/07/23/elon-musk-tesla-spacex-pedo-guy-comment/',
     },
     main_concepts:
     [ { text: 'Elon Musk',

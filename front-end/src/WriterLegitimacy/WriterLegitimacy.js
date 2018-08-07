@@ -3,6 +3,7 @@ import './WriterLegitimacy.css';
 import {Pie} from 'react-chartjs-2';
 import {HorizontalBar} from 'react-chartjs-2';
 import { CSSTransitionGroup } from 'react-transition-group';
+import ReactTooltip from 'react-tooltip';
 
 const backColor = 'rgba(0, 0, 0, 0.6)';
 const hoverBackColor = 'rgba(0, 0, 0, 0.8)';
@@ -11,7 +12,7 @@ const borderColor = 'rgba(255, 215, 0, 1)';
 
 function createTraitData(name, confidence, backColorPos, backColorNeg, hoverColorPos, hoverColorNeg, borderColorPos, borderColorNeg) {
     return {
-        labels: [name, name],
+        labels: ['+' + name, '-' + name],
         datasets: [{
             label: name,
             data: [confidence * 100, 100 - confidence * 100],
@@ -71,6 +72,12 @@ class WriterLegitimacy extends Component {
                 this.author_legitimacy = this.props.author_legitimacy;
         }
 
+        this.open_desc = 'The extent to which a person is open to experiencing different activities';
+        this.cons_desc = 'A person\'s tendency to act in an organized or thoughtful way';
+        this.extra_desc = 'A person\'s tendency to seek stimulation in the company of others';
+        this.agree_desc = 'A person\'s tendency to be compassionate and cooperative toward others';
+        this.neuro_desc = 'The extent to which a person\'s emotions are sensitive to the person\'s environment';
+
         // Negatives
         const backNeg = 'rgba(0, 0, 0, 0.65)';
         const backHover = 'rgba(0, 0, 0, 0.85)';
@@ -129,15 +136,33 @@ class WriterLegitimacy extends Component {
                 <div id="big-five">
                     <h2 id="big-five-text">Big Five Personality Traits</h2>
                     <ul id="big-five-list">
-                        <TraitGraph name='Openness' data={this.openData} />
-                        <TraitGraph name='Conscientiousness' data={this.consData} />
-                        <TraitGraph name='Extraversion' data={this.extraData} />
-                        <TraitGraph name='Agreeableness' data={this.agreeData} />
-                        <TraitGraph name='Neuoticism' data={this.neuroData} />
+                        <TraitGraph name='Openness' help_id='open_help' help_desc={this.open_desc} data={this.openData} /> 
+                        <TraitGraph name='Conscientiousness' help_id='cons_help' help_desc={this.cons_desc} data={this.consData} />
+                        <TraitGraph name='Extraversion' help_id='extra_help' help_desc={this.extra_desc} data={this.extraData} />
+                        <TraitGraph name='Agreeableness' help_id='agree_help' help_desc={this.agree_desc} data={this.agreeData} />
+                        <TraitGraph name='Neuoticism' help_id='neuro_help' help_desc={this.neuro_desc} data={this.neuroData} />
                     </ul>
                 </div>
                 <div id="facet">
-                    <h2 id="facet-text">Significant Personality Facets</h2>
+                    <div className="text-and-help">
+                        <h2 id="facet-text">Significant Personality Facets</h2>
+                        <a data-tip data-for="facet-tool" className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
+                        <ReactTooltip id='facet-tool' place="top" type="dark" effect="solid">
+                            <p className="help-text help-facet">Morality: See no need for pretense or manipulation when dealing with others and are therefore candid, frank, and genuine
+                            <br/>Dutifulness: Have a strong sense of duty and obligation
+                            <br/>Cautiousness: Are disposed to think through possibilities carefully before acting
+                            <br/>Intellect: Are intellectually curious and tend to think in symbols and abstractions.
+                            <br/>Altruism: Find that helping others and doing things for others is a form of self-fulfillment rather than self-sacrifice.</p>
+                        </ReactTooltip>
+                        <a data-tip data-for="facet-tool-2" className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
+                        <ReactTooltip id='facet-tool-2' place="top" type="dark" effect="solid">
+                            <p className="help-text help-facet">Anger: Have a tendency to feel angry.
+                            <br/>Immoderation: Feel strong cravings and urges that they have difficulty resisting, even though they know that they are likely to regret them later. 
+                            <br/>Imagination: Use fantasy not as an escape but as a way of creating for themselves a richer and more interesting inner-world
+                            <br/>Liberalism: Have a readiness to challenge authority, convention, and traditional values.
+                            <br/>Self-efficacy: Are confident in their ability to accomplish things.</p>
+                        </ReactTooltip>
+                    </div>
                     <ul id="facet-list">
                         <div id="list-one">
                             <FacetGraph data={this.facetOneData} />
@@ -168,7 +193,12 @@ class TraitGraph extends Component {
     render() {
         return (
             <div className='big-five-trait'>
-                <li className="trait-text">{this.props.name}</li>
+                <li className="trait-text">{this.props.name}
+                    <a data-tip data-for={this.props.help_id} className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
+                    <ReactTooltip id={this.props.help_id} place="top" type="dark" effect="solid">
+                        <p className='help-text'>{this.props.help_desc}</p>
+                    </ReactTooltip>
+                </li>
                 <Pie
                     ref='chart'
                     data={this.props.data}

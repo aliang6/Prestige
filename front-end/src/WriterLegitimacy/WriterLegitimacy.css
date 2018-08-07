@@ -10,7 +10,7 @@ body {
 
 #wri-leg {
   display: flex;
-  margin: 2%;
+  margin: 2% 2% 1% 2%;
   justify-content: space-around;
   align-content: center;
   flex-direction: column;
@@ -42,7 +42,7 @@ body {
 }
 
 #facet {
-  margin-top: 2%;
+  margin-top: 1.5%;
 }
 
 #big-five-list {
@@ -51,6 +51,7 @@ body {
 }
 
 #facet-list {
+  margin-top: -2%;
   display: flex;
   justify-content: space-around;
 }
@@ -102,4 +103,23 @@ body {
 .content-appear.content-appear-active {
   opacity: 1;
   transition: opacity 1s ease-in;
+}
+
+.text-and-help {
+  display: flex;
+  justify-content: center;
+}
+
+.help-logo {
+  display: inline-flex;
+  padding-bottom: 4%;
+}
+
+.help-text {
+  font-size: 0.75rem;
+  font-family: 'Raleway';
+}
+
+.help-facet {
+  text-align: left;
 }
