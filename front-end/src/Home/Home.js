@@ -8,10 +8,6 @@ class Home extends Component {
     }
 
     componentDidMount() {
-      const back = document.getElementById('background-image');
-      back.style.filter = 'blue(0px)';
-      const contentBack = document.getElementById('content');
-      contentBack.style.backgroundColor = 'rgba(255, 255, 255, 0)';
     }
 
     componentWillUnmount() {

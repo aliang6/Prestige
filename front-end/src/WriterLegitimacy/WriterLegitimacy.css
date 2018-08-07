@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto' 'Segoe';
 }
 
 body {
@@ -32,7 +31,7 @@ body {
   font-size: 1.3rem;
 }
 
-#facet-text { 
+#facet-text {
   color: rgba(255, 215, 0, 0.85);
   font-size: 2rem;
 }

@@ -4,6 +4,7 @@
 }
 
 * {
+  font-family: 'Simplifica', 'Roboto', 'Segoe', 'san-serif';
 }
 
 #results-page {
@@ -74,7 +75,7 @@
 }
 
 #header-links .header-button {
-  margin: 0px 5px 0px 5px; 
+  margin: 0px 5px 0px 5px;
 }
 
 .header-spacing {
