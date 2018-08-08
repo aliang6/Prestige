@@ -2,7 +2,7 @@
 Analyze articles for emotion and bias, understand important concepts, and be provided with a succinct summary.
 
 # Link
-https://hidden-tundra-52184.herokuapp.com/
+https://prestige-web-app.herokuapp.com/
 
 ## Audience
 Readers who want to be more informed about the legitimacy of an article or who may be unfamiliar with the subject matter. Also useful for writers checking for article bias.
