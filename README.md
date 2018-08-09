@@ -1,5 +1,5 @@
 # Prestige
-Analyze articles for emotion and bias, understand important concepts, and be provided with a succinct summary.
+Test website reputation, analyze author for trustworthiness, understand important concepts, and be provided with a succinct summary.
 
 # Link
 https://prestige-web-app.herokuapp.com/
