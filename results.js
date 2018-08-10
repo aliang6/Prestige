@@ -224,6 +224,7 @@ function determineReputation() { // Call Web of Trust to Assess Website Reputati
       console.log('Web url = ' + web_url);
       console.log(body[0]);
       if(body[0] === '<' || !JSON.parse(body)[web_url] || !JSON.parse(body)[web_url]['0'] || !JSON.parse(body)[web_url]['0'][0]){
+        website_reputation = 'Unknown';
         website_rating = 0;
         reputation_confidence = 0;
         console.log('return2');
@@ -231,7 +232,9 @@ function determineReputation() { // Call Web of Trust to Assess Website Reputati
       } else {
         website_rating = JSON.parse(body)[web_url]['0'][0];
         reputation_confidence = JSON.parse(body)[web_url]['0'][1];
-        if(website_rating < 20)
+        if(website_rating === 0 )
+          website_reputation = 'Unknown';
+        else if(website_rating < 20)
           website_reputation = 'Very Poor';
         else if(website_rating < 40)
           website_reputation = 'Poor';
@@ -239,7 +242,7 @@ function determineReputation() { // Call Web of Trust to Assess Website Reputati
           website_reputation = 'Unsatisfactory';
         else if(website_rating < 80)
           website_reputation = 'Good';
-        else
+        else if(website_rating <= 100)
           website_reputation = 'Excellent';
         console.log(website_reputation);
         resolve('Reputation determined');

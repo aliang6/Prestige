@@ -32,6 +32,9 @@ class WebsiteReputation extends Component {
             case 'Excellent':
                 this.reputation = <span className='excellent'>{this.props.reputation}</span>
                 break;
+            case 'Unknown':
+                this.reputation = <span className='unsatisfactory'>{this.props.reputation}</span>
+                break;
             default:
                 this.reputation = this.props.reputation
         };
@@ -138,7 +141,7 @@ class WebsiteReputation extends Component {
                 <h3 className="url-text">Website Url: <span className="url">{this.props.url}</span></h3>
                 <div className="graphs">
                     <div className="donut-graph">
-                        <h3>Reputation Rating: {this.props.rating}% 
+                        <h3>Reputation Rating: {this.props.rating}%
                             <a data-tip data-for="rep-tool" className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
                             <ReactTooltip id='rep-tool' place="top" type="dark" effect="solid">
                                 <p className="help-text">The reputation percentage is the estimate of the collective trust for the target in the given component.
@@ -149,7 +152,7 @@ class WebsiteReputation extends Component {
                                     <li className="help-text">&ge; 60: Good</li>
                                     <li className="help-text">&ge; 40: Unsatisfactory</li>
                                     <li className="help-text">&ge; 20: Poor</li>
-                                    <li className="help-text">&ge; 0: Very Poor</li>
+                                    <li className="help-text">&ge; 0: Very Poor or Unknown</li>
                                 </ul>
                             </ ReactTooltip>
                         </h3>
