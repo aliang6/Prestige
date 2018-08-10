@@ -54,7 +54,7 @@ class WriterLegitimacy extends Component {
         const data = this.props.personality;
 
         this.author_legitimacy = ''
-        
+
         switch(this.props.author_legitimacy) {
             case 'Untrustworthy':
                 this.author_legitimacy = <span className='untrustworthy'>{this.props.author_legitimacy}</span>
@@ -136,7 +136,7 @@ class WriterLegitimacy extends Component {
                 <div id="big-five">
                     <h2 id="big-five-text">Big Five Personality Traits</h2>
                     <ul id="big-five-list">
-                        <TraitGraph name='Openness' help_id='open_help' help_desc={this.open_desc} data={this.openData} /> 
+                        <TraitGraph name='Openness' help_id='open_help' help_desc={this.open_desc} data={this.openData} />
                         <TraitGraph name='Conscientiousness' help_id='cons_help' help_desc={this.cons_desc} data={this.consData} />
                         <TraitGraph name='Extraversion' help_id='extra_help' help_desc={this.extra_desc} data={this.extraData} />
                         <TraitGraph name='Agreeableness' help_id='agree_help' help_desc={this.agree_desc} data={this.agreeData} />
@@ -144,7 +144,8 @@ class WriterLegitimacy extends Component {
                     </ul>
                 </div>
                 <div id="facet">
-                    <div className="text-and-help">
+                    <div>
+                    <div className="text-and-help-wri">
                         <h2 id="facet-text">Significant Personality Facets</h2>
                         <a data-tip data-for="facet-tool" className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
                         <ReactTooltip id='facet-tool' place="top" type="dark" effect="solid">
@@ -157,11 +158,12 @@ class WriterLegitimacy extends Component {
                         <a data-tip data-for="facet-tool-2" className="help-logo"><ion-icon name="help-circle-outline" size="small"></ion-icon></a>
                         <ReactTooltip id='facet-tool-2' place="top" type="dark" effect="solid">
                             <p className="help-text help-facet">Anger: Have a tendency to feel angry.
-                            <br/>Immoderation: Feel strong cravings and urges that they have difficulty resisting, even though they know that they are likely to regret them later. 
+                            <br/>Immoderation: Feel strong cravings and urges that they have difficulty resisting, even though they know that they are likely to regret them later.
                             <br/>Imagination: Use fantasy not as an escape but as a way of creating for themselves a richer and more interesting inner-world
                             <br/>Liberalism: Have a readiness to challenge authority, convention, and traditional values.
                             <br/>Self-efficacy: Are confident in their ability to accomplish things.</p>
                         </ReactTooltip>
+                    </div>
                     </div>
                     <ul id="facet-list">
                         <div id="list-one">
@@ -230,8 +232,8 @@ class FacetGraph extends Component {
                     },
                     ticks: {
                         beginAtZero: true,
-                        fontSize: 10, 
-                        fontFamily: "'Roboto', sans-serif", 
+                        fontSize: 10,
+                        fontFamily: "'Roboto', sans-serif",
                         fontColor: 'rgba(255, 255, 255, 0.85)',
                         fontStyle: 'normal',
                     }
@@ -246,7 +248,7 @@ class FacetGraph extends Component {
                         drawOnChartArea: false,
                     },
                     ticks: {
-                        fontFamily: "'Roboto', sans-serif", 
+                        fontFamily: "'Roboto', sans-serif",
                         fontColor: 'rgba(255, 255, 255, 0.85)',
                         fontStyle: 'normal',
                     }
@@ -255,7 +257,7 @@ class FacetGraph extends Component {
                     fontColor: 'rgba(255, 255, 255, 0.9)',
                 }
             },
-            
+
         }
     }
 

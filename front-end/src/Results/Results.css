@@ -64,7 +64,7 @@
 
 #header-logo .header-button {
   font-size: 2rem;
-  margin: 0px 3%;
+  margin: 0px 3% 0 15%;
 }
 
 #header-logo .header-button:hover::after {
@@ -101,7 +101,6 @@
 
 #new-analysis-button {
   margin-left: 5px;
-  border: 1px solid rgba(255, 215, 0, 0.7);
   border-radius: 3px;
 }
 

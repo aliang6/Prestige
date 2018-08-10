@@ -31,9 +31,15 @@ body {
   font-size: 1.3rem;
 }
 
+.text-and-help-wri {
+  display: flex;
+  justify-content: center;
+}
+
 #facet-text {
   color: rgba(255, 215, 0, 0.85);
   font-size: 2rem;
+  text-shadow: 1px 1px black;
 }
 
 #big-five {
@@ -104,7 +110,7 @@ body {
   transition: opacity 1s ease-in;
 }
 
-.text-and-help {
+.elp {
   display: flex;
   justify-content: center;
 }

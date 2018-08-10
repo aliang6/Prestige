@@ -51,19 +51,27 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div id="background-image"></div>
+        <CSSTransitionGroup
+            transitionName="content"
+            transitionAppear={true}
+            transitionAppearTimeout={1000}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={1000}
+        >
+          <div id="background-image"></div>
+        </CSSTransitionGroup>
         <div id="content">
-          {this.state.index && 
+          {this.state.index &&
             <Home searchComponent = {
               <SearchForm
                 url = {this.state.url}
                 onUrlChange = {this.handleUrlChange}
-                onButtonClick = {this.handleSearchSubmit} 
+                onButtonClick = {this.handleSearchSubmit}
               />
             }/>
           }
-          {!this.state.index &&  
-            <Results 
+          {!this.state.index &&
+            <Results
               report = {this.report}
               newSearchClick = {this.handleNewSearch}
               newSearch = {this.newSearch}

@@ -122,6 +122,7 @@ function aylienAPI() { // Call Aylien to summarize and analyze the articles
   aylienSummarizeForm.url = inputUrl;
   aylienSentimentForm.url = inputUrl;
   aylienExtractForm.url = inputUrl;
+  console.log("Aylien API");
 
   var pExtract =  new Promise((resolve, reject) => {
     request.post({ url: aylienExtractUrl, form: aylienExtractForm, headers: aylienHeaders }, (err, res, body) => {
@@ -218,11 +219,15 @@ function determineReputation() { // Call Web of Trust to Assess Website Reputati
   var pReputation = new Promise((resolve, reject) => {
     request.get(options, (err, response, body) => {
       let temp = new urlParse(inputUrl);
+      console.log('Input url = ' + temp);
       web_url = temp.hostname;
-      console.log(web_url);
-      if(!JSON.parse(body)[web_url] || !JSON.parse(body)[web_url]['0'] || !JSON.parse(body)[web_url]['0'][0]){
+      console.log('Web url = ' + web_url);
+      console.log(body[0]);
+      if(body[0] === '<' || !JSON.parse(body)[web_url] || !JSON.parse(body)[web_url]['0'] || !JSON.parse(body)[web_url]['0'][0]){
+        website_rating = 0;
+        reputation_confidence = 0;
         console.log('return2');
-        reject('pReputation');
+        resolve('pReputation');
       } else {
         website_rating = JSON.parse(body)[web_url]['0'][0];
         reputation_confidence = JSON.parse(body)[web_url]['0'][1];
@@ -565,7 +570,7 @@ module.exports = {
       console.log('input url = ' + inputUrl);
       const goodUrl = isUrl(inputUrl);
       console.log('isUrl = ' + goodUrl);
-      if(isUrl(inputUrl)){
+      if(goodUrl){
         aylienAPI();
         naturalLanguageAPI();
         determineReputation();
