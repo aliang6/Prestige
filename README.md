@@ -29,6 +29,7 @@ The user enters the webpage, and sees the option to enter a website url that lin
 - Input for links
 - Results page with analysis and summary
 - Option to translate the article and its summary
+- Option to translate the site
 
 ## Languages
 #### Front-End
